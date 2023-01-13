@@ -1,0 +1,141 @@
+# Shamelessly copied from https://github.com/gf3/dotfiles
+# Screenshot: http://i.imgur.com/s0Blh.png
+
+# -*- mode: zsh -*-
+# vi: set ft=zsh :
+
+local GIT_PROMPT=""
+local GO_ENV_PROMPT=""
+local VIRTUAL_ENV_PROMPT=""
+local NODE_ENV_PROMPT=""
+local VAULTED_PROMPT=""
+
+git_prompt() {
+    local branch_prefix="%B%b"
+    local branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')" || return
+    local git_status_clean="$(git status --porcelain 2> /dev/null)"
+    local indexed_modified="$(echo -e "$git_status_clean" | grep "^M" | wc -l | awk '{print $1}')"
+    local not_indexed_modified="$(echo -e "$git_status_clean" | grep "^.M" | wc -l | awk '{print $1}')"
+    local indexed_new="$(echo -e "$git_status_clean" | grep "^A" | wc -l | awk '{print $1}')"
+    local not_indexed_new="$(echo -e "$git_status_clean" | grep "^.A" | wc -l | awk '{print $1}')"
+    local indexed_deleted="$(echo -e "$git_status_clean" | grep "^D" | wc -l | awk '{print $1}')"
+    local not_indexed_deleted="$(echo -e "$git_status_clean" | grep "^.D" | wc -l | awk '{print $1}')"
+    local untracked="$(echo -e "$git_status_clean" | grep "^??" | wc -l | awk '{print $1}')"
+
+    local remote
+    remote=()
+    local curr_remote="$(git config branch.${branch}.remote 2> /dev/null)"
+    if [[ -n $curr_remote ]]; then
+        local curr_merge_branch="$(git config branch.${branch}.merge | sed -e "s/refs\/heads\///g")"
+        local ahead="$(git rev-list --left-only --count ${branch}...origin/${curr_merge_branch} 2> /dev/null)"
+        local behind="$(git rev-list --left-only --count origin/${curr_merge_branch}...${branch} 2> /dev/null)"
+        if [[ $ahead != 0 ]]; then
+            remote+="↑$ahead"
+        fi
+        if [[ $behind != 0 ]]; then
+            remote+="↓$behind"
+        fi
+    fi
+
+    remote=${(j: :)remote}
+    if [[ -n $remote ]]; then
+        remote=" %{$fg[yellow]%}$remote%{$reset_color%}"
+    fi
+
+    local workspace=$(status $untracked $not_indexed_modified $not_indexed_deleted "red")
+    local staged=$(status $indexed_new $indexed_modified $indexed_deleted "green")
+
+    local result=""
+    if [[ -n $branch ]]; then
+        result=" %{$fg[magenta]%}$branch_prefix%{$reset_color%} %{$fg[magenta]%}$branch%{$reset_color%}$workspace$staged$remote"
+    fi
+    echo "$result"
+}
+
+nvm_info() {
+    local nvm_env=""
+    if [[ "$(nvm version)" != "system" ]]; then
+        nvm_env=" %{$fg[cyan]%}(node: $(node -v 2>&1))%{$reset_color%}"
+    fi
+    echo "$nvm_env"
+}
+
+virtualenv_info() {
+    # Get Virtual Env
+    local venv=""
+    if [[ "$(pyenv version-name)" != "system" ]]; then
+        venv=" %{$fg[cyan]%}($(pyenv version-name): $(python -V 2>&1))%{$reset_color%}"
+    fi
+    echo "$venv"
+}
+
+goenv_info() {
+    local goenv=""
+    if [[ "$(goenv version-name)" != "system" ]]; then
+        goenv=" %{$fg[cyan]%}($(goenv version-name): $(go version 2>&1))%{$reset_color%}"
+    fi
+    echo "$goenv"
+}
+
+status() {
+    new=$1
+    modified=$2
+    deleted=$3
+    color=$4
+
+    local result
+    result=()
+    if [[ $new != 0 ]]; then
+        result+="+$new"
+    fi
+
+    if [[ $modified != 0 ]]; then
+        result+="~$modified"
+    fi
+
+    if [[ $deleted != 0 ]]; then
+        result+="-$deleted"
+    fi
+
+    result=${(j: :)result}
+    if [[ -n $result ]]; then
+        result=" %{$fg[$color]%}$result%{$reset_color%}"
+    fi
+    echo "$result"
+}
+
+function vaulted_prompt() {
+    vault=""
+    result="$(vaulted ls | grep active | sed -E 's/(.*) \(active\)/\1/')"
+    if [[ -n $result ]]; then
+        vault="%{$fg[red]%} ${result}%{$reset_color%} "
+    fi
+    echo "${vault}"
+}
+
+function precmd() {
+    VIRTUAL_ENV_PROMPT="$(virtualenv_info)"
+    NODE_ENV_PROMPT="$(nvm_info)"
+    GIT_PROMPT="$(git_prompt)"
+    VAULTED_PROMPT="$(vaulted_prompt)"
+    GO_ENV_PROMPT=$(goenv_info)
+}
+
+setprompt() {
+    local prefix=""
+    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
+        prefix="%{$fg[red]%}%n%{$reset_color%} @ %{$fg[yellow]%}%m%{$reset_color%} → "
+    fi
+    # ❯
+    # %~
+    p='%(5~|%-1~/…/%3~|%4~)'
+    PROMPT='${VAULTED_PROMPT}${prefix}%{$fg[blue]%}${p}%{$reset_color%}${GIT_PROMPT}${VIRTUAL_ENV_PROMPT}${GO_ENV_PROMPT}${NODE_ENV_PROMPT}'$'\n''%{$fg[yellow]%}❯%{$reset_color%} '
+    # PROMPT2="%{$fg[yellow]%}%_ →%{$reset_color%} "
+    PROMPT2="%{$fg[yellow]%}%_ ❯%{$reset_color%} "
+    PROMPT3="%{$fg[yellow]%}?#%{$reset_color%} "
+    PROMPT3="%{$fg[yellow]%}+%N:%i% ❯{$reset_color%} "
+}
+
+# disable the default virtualenv prompt change
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+setprompt

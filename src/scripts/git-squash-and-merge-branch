@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+branch=${1:-$current_branch}
+remote_base=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
+base=${2:-${remote_base}}
+
+echo "Squash merging pull request ${branch} into ${base}"
+
+
+messages=$(git log --pretty=format:"%B%n" HEAD ^${base} )
+
+git checkout ${branch}
+git reset --soft ${base}
+git commit --message="${messages}" --edit
+
+git checkout $base
+git pull --rebase
+git merge $branch
+git push
+git delete-branch $branch
