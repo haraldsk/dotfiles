@@ -44,19 +44,14 @@ BREW_FORMULAS := \
 	cookiecutter \
 	coreutils \
 	fd \
-	fzf \
 	gh \
 	git \
-	git-flow-avh \
-	git-standup \
 	gnupg \
 	gource \
 	httpie \
-	icu4c \
 	jq \
 	libpq \
 	make \
-	minikube \
 	mysql-client \
 	node \
 	openssl@1.1 \
@@ -75,17 +70,11 @@ BREW_FORMULAS := \
 	tmux \
 	tmuxinator \
 	tree \
-	vaulted \
 	vim \
 	wget \
-	write-good \
-	xz \
 	yamllint \
 	yq \
-	zlib \
-	zsh \
-	zsh-completions \
-	zsh-syntax-highlighting
+	zlib
 
 BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
