@@ -80,11 +80,9 @@ BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
-	avibrazil-rdm \
 	docker \
 	fanny \
 	figma \
-	firefox \
 	font-input \
 	font-inter \
 	google-drive \
@@ -138,7 +136,6 @@ install: \
 	sdkman \
 	node \
 	script-config \
-	/Applications/Camera\ Settings.app \
 	$(PYENV) \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
@@ -262,14 +259,6 @@ $(PYENV_VERSIONS)/neovim3: $(PYTHON_3_DIR) |$(PYENV)
 $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install --upgrade pip
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install neovim
-
-cammera-settings: /Applications/Camera\ Settings.app
-/Applications/Camera\ Settings.app:
-	curl https://download01.logi.com/web/ftp/pub/techsupport/cameras/Webcams/LogiCameraSettings_3.0.12.pkg -o LogiCameraSettings_3.0.12.pkg
-	sudo installer -pkg LogiCameraSettings_3.0.12.pkg -target /
-	rm LogiCameraSettings_3.0.12.pkg
-	sudo chown ${USER}:staff "$@"
-	chmod 755 "$@"
 
 goenv: $(HOME)/.goenv
 $(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.zshrc
