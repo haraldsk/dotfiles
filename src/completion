@@ -14,3 +14,7 @@ if $(which kubectl)>/dev/null; then
   complete -F __start_kubectl k
 fi
 
+# 1password shell
+if [[ -x `which op` ]]; then
+    source <(op completion bash)
+fi
