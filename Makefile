@@ -108,16 +108,24 @@ BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
+	1password-cli \
 	docker \
+	drawio \
 	fanny \
 	figma \
 	font-input \
 	font-inter \
 	google-drive \
 	google-chrome \
+	keybase \
 	iterm2 \
+	meld \
+	messenger \
+	microsoft-teams \
 	slack \
-	spotify
+	spotify \
+	telegram-desktop \
+	yt-music
 
 BREW_CASKS_PATHS := $(addprefix $(BREW_CASK_ROOM),$(BREW_CASKS))
 
