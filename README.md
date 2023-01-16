@@ -1,6 +1,6 @@
-# .dotfiles
+# dotfiles
 
-Only tested on macOS
+Forked from `nhhagen/.dotfiles`
 
 ```sh
 make install
