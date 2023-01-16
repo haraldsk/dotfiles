@@ -1,0 +1,2 @@
+#  promptline setup from vim airline setup in .vimrc.after
+test -f ~/.bash/promptline.sh && source ~/.bash/promptline.sh

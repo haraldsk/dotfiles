@@ -1,4 +1,4 @@
-# google cli
+# gcloud
 export CLOUDSDK_COMPUTE_ZONE=eu-north1-a
 export CLOUDSDK_COMPUTE_REGION=eu-north1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
@@ -6,6 +6,40 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # kubectl
 export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
 
+# shell / shell / bash
 export HISTCONTROL="ignoredups:ignorespace"
+export CLICOLOR=true
 
+# vim
+export EDITOR=vim
+export VISUAL=vim
 
+# homebrew
+if [[ $(uname -p) -eq "arm" ]]; then
+  export PATH=${HOME}/bin:/usr/local/bin:/opt/homebrew/bin:${PATH}
+else
+  export PATH=${HOME}/bin:/usr/local/bin:${PATH}
+fi
+
+# go - https://github.com/golang/protobuf/issues/795
+if [[ -x  `which go` ]]; then
+    export GOROOT=$(go env GOROOT)
+    export GOPATH=$(go env GOPATH)
+    export GOBIN=$GOPATH/bin
+    export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+fi
+
+# vscode
+if [[ -x "/Applications/Visual Studio Code.app" ]]; then
+    export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+fi
+
+# glcoud
+if [ -f '/Users/harald/.google-cloud-sdk/path.bash.inc' ]; then
+    . '/Users/harald/.google-cloud-sdk/path.bash.inc'
+fi
+
+# pyenv
+if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
+    export PATH="$PATH:$HOME/.pyenv/bin"
+fi

@@ -1,0 +1,16 @@
+
+# bash
+if [ -r $(brew --prefix)/etc/bash_completion ]; then
+   source $(brew --prefix)/etc/bash_completion
+fi
+
+# gcloud
+if [ -f '/Users/harald/.google-cloud-sdk/completion.bash.inc' ]; then . '/Users/harald/.google-cloud-sdk/completion.bash.inc'; fi
+
+# kubectl
+if $(which kubectl)>/dev/null; then
+  source <(kubectl completion bash)
+  # completion works with kubectl aliased as k
+  complete -F __start_kubectl k
+fi
+
