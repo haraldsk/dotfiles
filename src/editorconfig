@@ -29,20 +29,12 @@ indent_size = 2
 [*.{yml,yaml}]
 indent_size = 2
 
-# Saltstack
-[*.sls]
-indent_size = 2
-
 # JSON
 [*.json]
 indent_size = 2
 
 # Ruby
 [*.rb]
-indent_size = 2
-
-# Vagrant
-[Vagrantfile]
 indent_size = 2
 
 # .babelrc
