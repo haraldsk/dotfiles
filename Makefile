@@ -333,6 +333,9 @@ dirs: $(DIRS)
 $(DIRS):
 	mkdir -p $@
 
+submodules: $(HOME)/.vim/bundle/Vundle.vim
+$(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
+	git submdule update --init
 
 .PHONY: \
 	base16-shell \
