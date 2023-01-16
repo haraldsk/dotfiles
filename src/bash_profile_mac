@@ -1,43 +1,91 @@
-source $HOME/.bash_prompt
-source $HOME/.alias
-#export TERM=xterm-256color-italic
-#export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.npm-packages/bin:/usr/local/share/npm/bin:$PATH
+# set -e
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
- source  `brew --prefix`/etc/bash_completion
+## bash ##
+test -f ~/.bashrc && source ~/.bashrc
+export CLICOLOR=true
+
+
+## homebrew ##
+if [[ $(uname -p) -eq "arm" ]]; then
+  export PATH=${HOME}/bin:/usr/local/bin:/opt/homebrew/bin:${PATH}
+else
+  export PATH=${HOME}/bin:/usr/local/bin:/usr/local/homebrew/bin:${PATH}
 fi
 
-if [ -f `brew --prefix`/etc/profile.d/colorsvn-env.sh ]; then
-  source `brew --prefix`/etc/profile.d/colorsvn-env.sh
+# breaking with bash5
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#    source $(brew --prefix)/etc/bash_completion
+# fi
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+# homebrew etc.
+export PATH="/usr/local/bin:$PATH"
+
+## kubectl ##
+if $(which kubectl)>/dev/null; then
+  source <(kubectl completion bash)
 fi
 
-export PATH=/Library/Frameworks/Mono.framework/Versions/3.0.6/bin:$PATH
-export PATH=~/bin:~/scripts:$PATH
+alias k='kubectl'
+complete -F __start_kubectl k
 
-export GIT_PS1_SHOWSTASHSTATE=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWUPSTREAM="verbose"
-export GIT_PS1_SHOWCOLORHINTS=true
+## promptline ##
+# pulls prompt setup from vim airline
+# setup in .vimrc.after
+test -f ~/.bash/promptline.sh && source ~/.bash/promptline.sh
 
-export ACKRC=".ackrc"
+
+## Iterm2 ##
+# integration must be loaded after promptline
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# bash: Place this in .bashrc.
+function iterm2_print_user_vars() {
+	iterm2_set_user_var aws_environment $(echo $VAULTED_ENV)
+}
+
+
+## vim ##
 export EDITOR=vim
+export VISUAL=vim
 
-# Tell ls to be colourful
-export CLICOLOR=1
+# shell aliases
+alias pycov="py.test --cov-report term-missing --cov='.'"
+# https://www.electricmonk.nl/log/2015/06/22/keep-your-home-dir-in-git-with-a-detached-working-directory/
+alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 
-# Tell grep to highlight matches
-export GREP_OPTIONS='--color=auto'
+# highlight
+alias hl='highlight'
 
-function gi() { curl -s https://www.gitignore.io/api/$@ ;}
+## python ##
+# https://hackercodex.com/guide/python-development-environment-on-mac-osx/
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
-function newproject() { curl https://raw.github.com/nhhagen/vagrant-dev-box/master/setup.sh | bash -s $@ ; }
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+# pyenv-virtualenv
+# This is sometimes very slow
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/niels.hagen/.sdkman"
-[[ -s "/Users/niels.hagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/niels.hagen/.sdkman/bin/sdkman-init.sh"
+# pyenv
+alias pyenv='LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib" CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include -I/usr/local/opt/sqlite/include" PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig /usr/local/opt/sqlite/lib/pkgconfig" pyenv'
 
-export PATH="$HOME/.poetry/bin:$PATH"
+## Golang ##
+# https://github.com/golang/protobuf/issues/795
+export GOROOT=$(go env GOROOT)
+export GOPATH=$(go env GOPATH)
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/harald/.google-cloud-sdk/path.bash.inc' ]; then . '/Users/harald/.google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/harald/.google-cloud-sdk/completion.bash.inc' ]; then . '/Users/harald/.google-cloud-sdk/completion.bash.inc'; fi
+
+if [[ -f $HOME/.env ]]; then
+  source $HOME/.env
+fi

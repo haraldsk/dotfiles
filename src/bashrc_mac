@@ -1,6 +1,6 @@
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/niels.hagen/.sdkman"
-[[ -s "/Users/niels.hagen/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/niels.hagen/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/Users/harald/.sdkman"
+[[ -s "/Users/harald/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/harald/.sdkman/bin/sdkman-init.sh"
 
 
 export NVM_DIR="$HOME/.nvm"
