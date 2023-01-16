@@ -133,6 +133,7 @@ install: \
 	$(HOME)/bin \
 	bash_profile \
 	google-cloud-sdk \
+	google-cloud-sdk-gke-gcloud-auth-plugin \
 	sdkman \
 	node \
 	script-config \
@@ -202,6 +203,10 @@ $(HOME)/.google-cloud-sdk: $(PYENV_VERSIONS)/gcp-sdk
 	CLOUDSDK_PYTHON=`$(PYENV) prefix gcp-sdk`/bin/python bash google-cloud-install.sh --disable-prompts
 	mv $(HOME)/google-cloud-sdk $(HOME)/.google-cloud-sdk
 	rm google-cloud-install.sh
+
+google-cloud-sdk-gke-gcloud-auth-plugin: |$(HOME)/.google-cloud-sdk/bin/gke-gcloud-auth-plugin
+(HOME)/.google-cloud-sdk/bin/gke-gcloud-auth-plugin: |$(HOME)/.google-cloud-sdk $(HOME)/.bash_profile
+	CLOUDSDK_CORE_DISABLE_PROMPTS=1 gcloud components install gke-gcloud-auth-plugin
 
 sdkman: |$(HOME)/.sdkman
 $(HOME)/.sdkman:
