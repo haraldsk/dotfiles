@@ -9,6 +9,8 @@ export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
 # shell / shell / bash
 export HISTCONTROL="ignoredups:ignorespace"
 export CLICOLOR=true
+# remove zsh nagging on osx
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # vim
 export EDITOR=vim
