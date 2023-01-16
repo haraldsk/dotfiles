@@ -64,3 +64,5 @@
     insteadOf = https://github.com/coopnorge/
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[rebase]
+	autosquash = true
