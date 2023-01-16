@@ -17,14 +17,18 @@ PREDEF_DOTFILES := $(addprefix $(HOME)/.,$(DOTFILES))
 ifeq ($(shell uname -p),arm)
 BREW_PATH := /opt/homebrew
 else
-BREW_PATH := /usr/local/homebrew
+BREW_PATH := /usr/local
 endif
 
 BREW := $(BREW_PATH)/bin/brew
 
 BREW_CELLAR := $(BREW_PATH)/Cellar/
 BREW_CASK_ROOM := $(BREW_PATH)/Caskroom/
+ifeq ($(shell uname -p),arm)
 BREW_TAPS_PATH := $(BREW_PATH)/Library/Taps
+else
+BREW_TAPS_PATH := $(BREW_PATH)/Homebrew/Library/Taps
+endif
 
 BREW_TAPS := \
 	github/homebrew-gh \
