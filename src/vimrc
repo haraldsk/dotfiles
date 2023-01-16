@@ -1,0 +1,142 @@
+" vundle setup """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'preservim/nerdtree'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'edkolev/promptline.vim'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'bronson/vim-trailing-whitespace'
+  Plugin 'jeetsukumaran/vim-buffergator'
+  Plugin 'vim-syntastic/syntastic'
+  Plugin 'loonkwil/vim-ruler'
+  Plugin 'elzr/vim-json'
+  Plugin 'hashivim/vim-terraform'
+  Plugin 'itspriddle/vim-marked'
+  Plugin 'godlygeek/tabular'
+  Plugin 'plasticboy/vim-markdown'
+  Plugin 'editorconfig/editorconfig-vim'
+  Plugin 'towolf/vim-helm'
+  Plugin 'tpope/vim-fugitive'
+call vundle#end()
+
+" keyboard mappings """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+
+"map <F2> :bufdo! w<CR>
+map <F1> <ESC>:tabfirst<CR>
+map <F2> <ESC>:w<CR>
+map <F3> <ESC>:w<CR>:!pytest --cov-report term-missing --cov='.'<CR>
+set pastetoggle=<F4>
+"map <F5>.
+"map <F6>.
+"map <F7> <ESC>:SyntasticCheck<CR>
+"map <F8>.
+map <F9> <ESC>:make<CR>
+map <F10> <ESC>:tabnew
+map <F11> <ESC>:tabprevious<CR>
+map <F12> <ESC>:tabnext<CR>
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" double tap space in normal mode for space insert
+nnoremap <space><space> i<space><esc>
+
+" strange filetypes
+" Set the filetype based on the file's extension, but only if
+" 'filetype' has not already been set
+au BufRead,BufNewFile *.yaml.tmpl set filetype=yaml
+
+" various settings """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set number " set line numbers
+set backspace=indent,eol,start " more power to backspace
+" set autoindent
+filetype plugin indent on
+filetype indent on
+
+
+" vim-terraform """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:terraform_fmt_on_save=1
+
+" nerd-tree """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+let NERDTreeHijackNetrw=1
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+nmap ; :CtrlPBuffer<CR>
+
+" syntax highlight colors and color scheme """"""""""""""""""""""""""""""""""
+syntax on
+
+" molokai color scheme https://github.com/tomasr/molokai
+colorscheme molokai
+let g:molokai_original = 1
+
+
+" vim-airline """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+
+
+" vim-airline-promptline  """""""""""""""""""""""""""""""""""""""""""""""""""""
+" To Update:
+" 1. restart vim to reload g:promptline_preset (or google how to reload)
+" 2. :PromptlineSnapshot! .bash/promptline.sh airline
+
+let g:promptline_preset = {
+        \'a' : [ '$(echo $CLOUDSDK_CORE_PROJECT)', '$(kubectx -c)', promptline#slices#battery({ 'threshold': 25 }) ],
+        \'b' : [ promptline#slices#cwd() ],
+        \'c' : [ promptline#slices#git_status(), promptline#slices#vcs_branch(), promptline#slices#python_virtualenv(),  promptline#slices#jobs() ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
+
+let g:promptline_symbols = {
+      \ 'left'           : '',
+      \ 'right'          : ' ',
+      \ 'left_alt'       : '> ',
+      \ 'right_alt'      : '<',
+      \ 'dir_sep'        : ' / ',
+      \ 'truncation'     : '...',
+      \ 'vcs_branch'     : '',
+      \ 'battery'        : '',
+      \ 'space'          : ' '}
+"
+"
+" to disable powerline symbols
+let g:promptline_powerline_symbols = 1
+
+
+" syntastic """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8', 'mypy']
+
+" vim-markdown """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" conceal links, bold, etc
+set conceallevel=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
