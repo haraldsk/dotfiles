@@ -178,6 +178,7 @@ install: \
 	google-cloud-sdk-gke-gcloud-auth-plugin \
 	sdkman \
 	script-config \
+	powerline-fonts \
 	$(PYENV) \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
@@ -326,6 +327,10 @@ $(DIRS):
 submodules: $(HOME)/.vim/bundle/Vundle.vim
 $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	git submdule update --init
+
+powerline-fonts: $(HOME)/Library/Fonts//SpaceMono-Bold.ttf
+$(HOME)/Library/Fonts//SpaceMono-Bold.ttf: |$(BREW_CELLAR)git submodules
+	sh fonts/powerline/install.sh
 
 .PHONY: \
 	base16-shell \
