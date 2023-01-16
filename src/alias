@@ -1,4 +1,4 @@
-# -*- mode: zsh -*-
+# -*- mode: bash-*-
 # vi: set ft=sh :
 
 alias ccat='pygmentize -g'
@@ -26,10 +26,20 @@ alias mux='tmuxinator'
 # The silver searcher
 alias ag='ag --path-to-agignore ~/.agignore'
 
+# pycov
+alias pycov="py.test --cov-report term-missing --cov='.'"
+
 #pip
 alias pip-update-all='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 #tig
 alias tig='tig --show-signature'
 
+# make
 alias make='gmake'
+
+# highlight
+alias hl='highlight'
+
+# kubectl
+alias k='kubectl'

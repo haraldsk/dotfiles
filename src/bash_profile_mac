@@ -1,5 +1,8 @@
 # set -e
 
+# load aliases
+source ~/.alias
+
 ## bash ##
 test -f ~/.bashrc && source ~/.bashrc
 export CLICOLOR=true
@@ -26,7 +29,6 @@ if $(which kubectl)>/dev/null; then
   source <(kubectl completion bash)
 fi
 
-alias k='kubectl'
 complete -F __start_kubectl k
 
 ## promptline ##
@@ -67,9 +69,6 @@ fi
 # pyenv-virtualenv
 # This is sometimes very slow
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-# pyenv
-alias pyenv='LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib" CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include -I/usr/local/opt/sqlite/include" PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig /usr/local/opt/sqlite/lib/pkgconfig" pyenv'
 
 ## Golang ##
 # https://github.com/golang/protobuf/issues/795
