@@ -36,27 +36,49 @@ PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
 
 BREW_FORMULAS := \
 	ack \
+	argocd \
 	aspell \
+	autoconf \
 	azure-cli \
 	bat \
 	battery \
+	bash \
+	bash-completion \
+	cdk8s \
 	cmake \
 	cookiecutter \
 	coreutils \
+	diffutils \
+	docker-compose \
+	dyff \
 	fd \
 	gh \
 	git \
+	github-markdown-toc \
 	gnupg \
 	gource \
+	grpcurl \
+	helm \
+	highlight \
 	httpie \
+	ipcalc \
+	istioctl \
 	jq \
+	k3d \
+	k9s \
+	kind \
+	kubectx \
+	kubernetes-cli \
+	kustomize \
 	libpq \
 	make \
 	mysql-client \
-	node \
+	opa \
 	openssl@1.1 \
 	openssl@3 \
 	pkg-config \
+	pstree \
+	pwgen \
 	readline \
 	reattach-to-user-namespace \
 	ripgrep \
@@ -64,16 +86,22 @@ BREW_FORMULAS := \
 	spark \
 	speedtest \
 	sqlite \
+	teller \
 	terraform \
+	terraform-docs \
+	terramate \
+	tflint \
 	the_silver_searcher \
 	tig \
 	tmux \
 	tmuxinator \
 	tree \
-	vim \
+	up \
+	watch \
 	wget \
 	yamllint \
 	yq \
+	xz \
 	zlib
 
 BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
