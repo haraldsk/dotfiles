@@ -307,11 +307,11 @@ $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install neovim
 
 goenv: $(HOME)/.goenv
-$(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.zshrc
+$(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile
 	git clone https://github.com/syndbg/goenv.git $@
 
 tfenv: $(HOME)/.tfenv
-$(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.zshrc
+$(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile
 	git clone https://github.com/tfutils/tfenv.git $@
 
 $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)
