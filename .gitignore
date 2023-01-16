@@ -7,6 +7,7 @@
 Session.vim
 .netrwhist
 *~
+!src/vim/bundle/.keep
 src/vim/bundle
 src/vim/plugged
 src/vim/plugin/eclim.vim
