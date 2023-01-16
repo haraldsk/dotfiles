@@ -61,6 +61,7 @@ BREW_FORMULAS := \
 	git \
 	github-markdown-toc \
 	gnupg \
+	go \
 	gource \
 	grpcurl \
 	helm \
