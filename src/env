@@ -1,0 +1,11 @@
+# google cli
+export CLOUDSDK_COMPUTE_ZONE=eu-north1-a
+export CLOUDSDK_COMPUTE_REGION=eu-north1
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# kubectl
+export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
+
+export HISTCONTROL="ignoredups:ignorespace"
+
+
