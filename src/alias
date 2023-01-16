@@ -1,8 +1,6 @@
 # -*- mode: zsh -*-
 # vi: set ft=sh :
 
-alias vim=nvim
-
 alias ccat='pygmentize -g'
 
 # List the largest files/directory in directory
@@ -22,18 +20,6 @@ alias gpr='git pull --rebase'
 alias grd='git rebase develop'
 alias gs='git status'
 
-# Git flow
-alias gffs='git flow feature start'
-alias gfff='git flow feature finish --keepremote'
-alias gfrs='git flow release start'
-alias gfrf='git flow release finish --keepremote'
-
-# Vagrant
-alias vu='Vagrant up'
-alias vh='Vagrant halt'
-alias vhf='vagrant halt -f'
-alias vssh='vagrant ssh'
-
 # Tmuxinator
 alias mux='tmuxinator'
 
@@ -41,11 +27,9 @@ alias mux='tmuxinator'
 alias ag='ag --path-to-agignore ~/.agignore'
 
 #pip
-
 alias pip-update-all='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 #tig
 alias tig='tig --show-signature'
 
 alias make='gmake'
-# alias make='gmake -j 4'
