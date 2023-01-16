@@ -9,7 +9,7 @@ STAMPS := $(ROOT_DIR)/.stamps
 DOT_CONFIG := $(HOME)/.config
 BIN := $(HOME)/bin
 
-DIRS := $(HOME)/code $(HOME)/code/personal $(HOME)/code/work $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
+DIRS := $(HOME)/src/github  $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
 DOTFILES := $(shell ls src)
 PREDEF_DOTFILES := $(addprefix $(HOME)/.,$(DOTFILES))
 
@@ -159,7 +159,7 @@ PYTHON_3_NEOVIM_LIB := $(PYENV_VERSIONS)/neovim3/lib/python$(PYTHON_3_MINOR)/sit
 POETRY_HOME := $(HOME)/.poetry
 
 install: \
-	$(HOME)/code \
+	$(HOME)/src/github \
 	$(PREDEF_BREW_TAPS) \
 	$(BREW_FORMULAS_PATHS) \
 	$(UNIVERSAL_CTAGS) \
