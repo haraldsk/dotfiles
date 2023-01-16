@@ -169,7 +169,6 @@ install: \
 	$(BREW_CELLAR)/neovim \
 	$(PREDEF_DOTFILES) \
 	$(DOT_CONFIG)/nvim \
-	nvm \
 	xcode \
 	scripts \
 	$(HOME)/bin \
@@ -177,7 +176,6 @@ install: \
 	google-cloud-sdk \
 	google-cloud-sdk-gke-gcloud-auth-plugin \
 	sdkman \
-	node \
 	script-config \
 	$(PYENV) \
 	$(HOME)/.goenv \
@@ -274,16 +272,7 @@ $(HOME)/.config/base16-shell: |$(DOT_CONFIG)
 # 	mv tmp/Input_Fonts $(dir $@)
 # 	rm -rf tmp
 
-nvm: |$(HOME)/.nvm
-$(HOME)/.nvm:
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-	source $(HOME)/.nvm/nvm.sh && nvm alias default system
-
-node: |$(HOME)/.nvm/alias/default
-$(HOME)/.nvm/alias/default: |$(HOME)/.nvm
-	source $(HOME)/.nvm/nvm.sh && nvm alias default system
-
-/usr/local/Cellar/neovim: $(PYTHON_3_NEOVIM_LIB) | $(HOME)/.vimrc_background $(BREW)
+$(BREW_CELLAR)/neovim: $(PYTHON_3_NEOVIM_LIB) | $(HOME)/.vimrc_background $(BREW)
 	$(BREW) install neovim
 
 pyenv: $(PYENV)
@@ -350,8 +339,6 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	input-font \
 	install \
 	neovim \
-	node \
 	nvim-config \
-	nvm \
 	script-config \
 	xcode
