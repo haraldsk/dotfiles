@@ -80,6 +80,7 @@ BREW_FORMULAS := \
 	libpq \
 	make \
 	mysql-client \
+	node \
 	opa \
 	openssl@1.1 \
 	openssl@3 \
@@ -176,6 +177,8 @@ install: \
 	bash_profile \
 	google-cloud-sdk \
 	google-cloud-sdk-gke-gcloud-auth-plugin \
+	node \
+	nvm \
 	sdkman \
 	script-config \
 	powerline-fonts \
@@ -274,6 +277,15 @@ $(HOME)/.config/base16-shell: |$(DOT_CONFIG)
 # 	mv tmp/Input_Fonts $(dir $@)
 # 	rm -rf tmp
 
+nvm: |$(HOME)/.nvm
+$(HOME)/.nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+	source $(HOME)/.nvm/nvm.sh && nvm alias default system
+
+node: |$(HOME)/.nvm/alias/default
+$(HOME)/.nvm/alias/default: |$(HOME)/.nvm
+	source $(HOME)/.nvm/nvm.sh && nvm alias default system
+
 $(BREW_CELLAR)/neovim: $(PYTHON_3_NEOVIM_LIB) | $(HOME)/.vimrc_background $(BREW)
 	$(BREW) install neovim
 
@@ -345,6 +357,8 @@ $(HOME)/Library/Fonts//SpaceMono-Bold.ttf: |$(BREW_CELLAR)git submodules
 	input-font \
 	install \
 	neovim \
+	node \
+	nvm \
 	nvim-config \
 	script-config \
 	xcode
