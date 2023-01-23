@@ -13,8 +13,6 @@ src/vim/plugged
 src/vim/plugin/eclim.vim
 src/vim/eclim
 
-!fonts/.keep
-fonts/powerline
 
 ### OSX ###
 .DS_Store
