@@ -7,3 +7,5 @@ vim.opt.signcolumn = "yes:2"
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.ruler = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

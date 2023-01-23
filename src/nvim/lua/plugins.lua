@@ -97,6 +97,15 @@ return require('packer').startup(function(use)
       require("plugins.markdown")
     end,
   })
+  use({
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    config = function ()
+      require"nvim-tree".setup()
+    end
+  })
 
   -- My plugins here
   -- use 'foo1/bar1.nvim'
