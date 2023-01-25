@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'fatih/vim-go'
   use 'tmux-plugins/vim-tmux' -- plugin for tmux.conf
+  use 'christoomey/vim-tmux-navigator' -- jumping between vim and tmux
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround' -- change surrounding chars
