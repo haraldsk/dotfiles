@@ -58,6 +58,7 @@ BREW_FORMULAS := \
 	docker-compose \
 	dyff \
 	fd \
+	fzf \
 	gh \
 	git \
 	github-markdown-toc \
@@ -117,6 +118,7 @@ UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
 	1password-cli \
+	copyq \
 	docker \
 	drawio \
 	fanny \
