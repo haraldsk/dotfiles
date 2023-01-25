@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround' -- change surrounding chars
   use 'tpope/vim-dispatch' -- async dispatch into tmux panes, etc.
   use 'mhinz/vim-signify' -- gutter diff - async vim-gitgutter
+  use 'towolf/vim-helm'
   use 'itspriddle/vim-marked' -- Marked plugin
   use({
     'nvim-telescope/telescope.nvim',

@@ -12,6 +12,14 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- disable diagostics so lsp doesn't interfere with vim-helm plugin
+  if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
+      vim.diagnostic.disable(bufnr)
+      vim.defer_fn(function()
+        vim.diagnostic.reset(nil, bufnr)
+      end, 1000)
+
+    end
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
