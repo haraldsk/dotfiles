@@ -91,6 +91,12 @@ return require('packer').startup(function(use)
   })
 
   use({
+    "ctrlpvim/ctrlp.vim",
+    config = function()
+      require("plugins.ctrlp")
+    end,
+  })
+  use({
     "plasticboy/vim-markdown",
     requires = {
       { "godlygeek/tabular" },
