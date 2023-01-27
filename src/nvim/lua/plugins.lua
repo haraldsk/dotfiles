@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround' -- change surrounding chars
   use 'tpope/vim-dispatch' -- async dispatch into tmux panes, etc.
-  use 'mhinz/vim-signify' -- gutter diff - async vim-gitgutter
   use 'towolf/vim-helm'
   use 'itspriddle/vim-marked' -- Marked plugin
   use({
@@ -64,7 +63,12 @@ return require('packer').startup(function(use)
       require("plugins.treesitter")
     end,
   })
-
+  use({
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require("plugins.gitsigns")
+      end
+  })
   use({
     "neovim/nvim-lspconfig",
     requires = {
