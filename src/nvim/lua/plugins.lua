@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround' -- change surrounding chars
   use 'tpope/vim-dispatch' -- async dispatch into tmux panes, etc.
   use 'towolf/vim-helm'
+  use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
   use 'itspriddle/vim-marked' -- Marked plugin
   use({
     'nvim-telescope/telescope.nvim',
@@ -36,6 +37,13 @@ return require('packer').startup(function(use)
     },
     config = function()
       require("plugins.telescope")
+    end,
+  })
+
+  use({
+    'stevearc/aerial.nvim',
+    config = function()
+      require("plugins.aerial")
     end,
   })
 
