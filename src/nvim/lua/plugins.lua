@@ -46,6 +46,14 @@ return require('packer').startup(function(use)
       require("plugins.aerial")
     end,
   })
+  use({
+     'akinsho/bufferline.nvim',
+      tag = "v3.*",
+      requires = 'nvim-tree/nvim-web-devicons',
+    config = function ()
+      require("bufferline").setup()
+    end
+  })
 
   use({
     'pwntester/octo.nvim',
