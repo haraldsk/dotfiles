@@ -13,6 +13,8 @@ src/vim/plugged
 src/vim/plugin/eclim.vim
 src/vim/eclim
 
+### NVIM ###
+src/nvim/plugin/packer_compiled.lua
 
 ### OSX ###
 .DS_Store
