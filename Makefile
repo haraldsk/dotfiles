@@ -187,7 +187,8 @@ BREW_CASKS := \
 	slack \
 	spotify \
 	telegram-desktop \
-	yt-music
+	yt-music \
+	zoom
 
 BREW_CASKS_PATHS := $(addprefix $(BREW_CASK_ROOM),$(BREW_CASKS))
 
