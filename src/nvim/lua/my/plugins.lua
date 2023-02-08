@@ -1,5 +1,3 @@
--- todo
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -49,6 +47,12 @@ return require('packer').startup(function(use)
   use 'towolf/vim-helm'
   use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
   use 'itspriddle/vim-marked' -- Marked plugin
+
+  -- colorschemes
+  use 'lunarvim/darkplus.nvim'
+  use 'lunarvim/Onedarker.nvim'
+  use 'folke/tokyonight.nvim'
+
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
@@ -159,12 +163,6 @@ return require('packer').startup(function(use)
     end
   })
 
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
