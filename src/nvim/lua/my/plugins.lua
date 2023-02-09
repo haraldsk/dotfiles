@@ -53,6 +53,23 @@ return require('packer').startup(function(use)
   use 'lunarvim/Onedarker.nvim'
   use 'folke/tokyonight.nvim'
 
+  use { "hrsh7th/nvim-cmp",
+    config = function()
+      require("plugins.cmp")
+    end,
+  } -- The completion plugin
+  use { "hrsh7th/cmp-buffer", } -- buffer completions
+  use { "hrsh7th/cmp-path", } -- path completions
+  -- use({"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}) -- github plugin requires gh auth and GITHUB_API_TOKEN
+  -- hrsh7th/cmp-copilot -- github copilot interation
+	use { "saadparwaiz1/cmp_luasnip", } -- snippet completions
+	use { "hrsh7th/cmp-nvim-lsp", }
+	use { "hrsh7th/cmp-nvim-lua", }
+
+	-- Snippets
+  use { "L3MON4D3/LuaSnip", } --snippet engine
+  use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
+
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
