@@ -118,6 +118,7 @@ UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
 	1password-cli \
+	alacritty \
 	copyq \
 	docker \
 	drawio \
