@@ -111,7 +111,8 @@ BREW_FORMULAS := \
 	yamllint \
 	yq \
 	xz \
-	zlib
+	zlib \
+	zoxide
 
 BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
