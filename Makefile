@@ -35,6 +35,7 @@ BREW_TAPS := \
 	goles/homebrew-battery \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
+	koekeishiya/formulae \
 	teamookla/homebrew-speedtest
 
 PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
@@ -71,6 +72,7 @@ BREW_FORMULAS := \
 	httpie \
 	ipcalc \
 	istioctl \
+	yabai \
 	jq \
 	k3d \
 	k9s \
@@ -92,6 +94,7 @@ BREW_FORMULAS := \
 	reattach-to-user-namespace \
 	ripgrep \
 	ruby \
+	skhd \
 	spark \
 	speedtest \
 	sqlite \
