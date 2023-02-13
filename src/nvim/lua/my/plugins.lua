@@ -130,30 +130,20 @@ return require('packer').startup(function(use)
         require("plugins.gitsigns")
       end
   })
-  use({
-    "neovim/nvim-lspconfig",
-    requires = {
-      "williamboman/mason-lspconfig.nvim"
-    },
-    config = function()
-      require("plugins.lspconfig")
-    end
+
+  -- lsp -- load order important {
+  use({ "neovim/nvim-lspconfig",
+    requires = { "williamboman/mason-lspconfig.nvim" },
   })
 
-  use({
-    "williamboman/mason-lspconfig.nvim",
-    requires = {
-      "williamboman/mason.nvim"
-    },
-    config = function()
-      require("plugins.lspconfig")
-    end
+  use({ "williamboman/mason-lspconfig.nvim",
+    requires = { "williamboman/mason.nvim" },
   })
 
-  use({
-    "williamboman/mason.nvim",
-    config = require("mason").setup()
+  use({ "williamboman/mason.nvim",
+      config = require("mason").setup()
   })
+  -- }
 
   use({
     "ctrlpvim/ctrlp.vim",
