@@ -112,18 +112,15 @@ return require('packer').startup(function(use)
     end
   })
 
-  use({
-    "nvim-treesitter/nvim-treesitter",
+  -- treesitter
+  use{ "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     requires = {
-      "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    config = function()
-      require("plugins.treesitter")
-    end,
-  })
+  }
+
   use({
       'lewis6991/gitsigns.nvim',
       config = function()
