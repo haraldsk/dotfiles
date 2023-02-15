@@ -37,22 +37,24 @@ packer.init({
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'fatih/vim-go'
-  use 'tmux-plugins/vim-tmux' -- plugin for tmux.conf
   use 'christoomey/vim-tmux-navigator' -- jumping between vim and tmux
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround' -- change surrounding chars
+  use 'tpope/vim-commentary' -- easy commening
   use 'tpope/vim-dispatch' -- async dispatch into tmux panes, etc.
-  use 'towolf/vim-helm'
   use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
   use 'itspriddle/vim-marked' -- Marked plugin
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
+  -- syntax plugins
+  use 'fatih/vim-go'
+  use 'towolf/vim-helm'
+  use 'tmux-plugins/vim-tmux' -- plugin for tmux.conf
 
   -- colorschemes
   use 'lunarvim/darkplus.nvim'
   use 'lunarvim/Onedarker.nvim'
   use 'folke/tokyonight.nvim'
 
+  -- Completions
   use { "hrsh7th/nvim-cmp",
     config = function()
       require("plugins.cmp")
@@ -91,6 +93,7 @@ return require('packer').startup(function(use)
       require("plugins.aerial")
     end,
   })
+
   use({
      'akinsho/bufferline.nvim',
       tag = "v3.*",
@@ -121,6 +124,8 @@ return require('packer').startup(function(use)
     },
   }
 
+  -- git integrations
+  use 'tpope/vim-fugitive'
   use({
       'lewis6991/gitsigns.nvim',
       config = function()
