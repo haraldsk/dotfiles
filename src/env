@@ -1,6 +1,6 @@
 # gcloud
-export CLOUDSDK_COMPUTE_ZONE=eu-north1-a
-export CLOUDSDK_COMPUTE_REGION=eu-north1
+export CLOUDSDK_COMPUTE_ZONE=europe-north1-a
+export CLOUDSDK_COMPUTE_REGION=europe-north1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # kubectl
