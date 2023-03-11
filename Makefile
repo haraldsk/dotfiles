@@ -35,7 +35,7 @@ BREW_TAPS := \
 	goles/homebrew-battery \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
-	koekeishiya/formulae \
+	koekeishiya/homebrew-formulae \
 	teamookla/homebrew-speedtest
 
 PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
