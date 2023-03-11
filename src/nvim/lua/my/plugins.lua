@@ -72,6 +72,12 @@ return require('packer').startup(function(use)
   use { "L3MON4D3/LuaSnip", } --snippet engine
   use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
 
+  --- Todo
+  use {
+    "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+  }
+
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
