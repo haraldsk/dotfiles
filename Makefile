@@ -421,6 +421,6 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	node \
 	nvm \
 	nvim-config \
-	alacrityy-config \
+	alacritty-config \
 	script-config \
 	xcode
