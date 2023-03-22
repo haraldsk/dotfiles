@@ -109,6 +109,7 @@ BREW_FORMULAS := \
 	tmuxinator \
 	tree \
 	up \
+	vale \
 	watch \
 	wget \
 	yamllint \
@@ -231,6 +232,7 @@ install: \
 	$(BREW_CELLAR)/neovim \
 	$(PREDEF_DOTFILES) \
 	$(DOT_CONFIG)/nvim \
+	$(DOT_CONFIG)/alacritty \
 	xcode \
 	scripts \
 	$(HOME)/bin \
@@ -289,6 +291,10 @@ $(HOME)/scripts:
 bash_profile: $(HOME)/.bash_profile
 $(HOME)/.bash_profile: |$(HOME)/.bash_profile_mac
 	ln -Fsv $(HOME)/.bash_profile_mac $@
+
+alacritty-config: $(DOT_CONFIG)/alacritty
+$(DOT_CONFIG)/alacritty: |$(DOT_CONFIG)
+	ln -Fsv $(PWD)/src/$(patsubst .%,%,$(notdir $@)) $@
 
 nvim-config: $(DOT_CONFIG)/nvim
 $(DOT_CONFIG)/nvim: |$(DOT_CONFIG)
@@ -415,5 +421,6 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	node \
 	nvm \
 	nvim-config \
+	alacrityy-config \
 	script-config \
 	xcode

@@ -1,4 +1,7 @@
 #
+## Shell plugins
+* https://direnv.net/docs/installation.html
+*
 
 ## Alacritty
 * Migrate from Iterm2 to Alacritty
