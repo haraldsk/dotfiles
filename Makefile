@@ -77,6 +77,7 @@ BREW_FORMULAS := \
 	k3d \
 	k9s \
 	kind \
+	krew \
 	kubectx \
 	kubernetes-cli \
 	kustomize \

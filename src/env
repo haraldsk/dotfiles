@@ -41,6 +41,11 @@ if [ -f '/Users/harald/.google-cloud-sdk/path.bash.inc' ]; then
     . '/Users/harald/.google-cloud-sdk/path.bash.inc'
 fi
 
+# krew
+if [[ -d "$HOME/.krew/bin" ]]; then
+    export PATH="${PATH}:${HOME}/.krew/bin"
+fi
+
 # pyenv
 if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
     export PATH="$PATH:$HOME/.pyenv/bin"
