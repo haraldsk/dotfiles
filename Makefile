@@ -13,7 +13,6 @@ DIRS := $(HOME)/src/github  $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
 DOTFILES := $(shell ls src)
 PREDEF_DOTFILES := $(addprefix $(HOME)/.,$(DOTFILES))
 
-
 ifeq ($(shell uname -p),arm)
 BREW_PATH := /opt/homebrew
 else
@@ -199,6 +198,28 @@ BREW_CASKS := \
 
 BREW_CASKS_PATHS := $(addprefix $(BREW_CASK_ROOM),$(BREW_CASKS))
 
+KUBECTL := $(BREW_PATH)/bin/kubectl
+
+KREW_PATH := $(HOME)/.krew
+KREW_STORE := $(KREW_PATH)/store/
+
+KREW_PLUGINS := \
+	access-matrix \
+	advise-psp \
+	colorize-applied \
+	community-images \
+	cost \
+	flame \
+	neat  \
+	images \
+	kurt \
+	mtail \
+	ns \
+	viewnode \
+	resource-capacity
+
+KREW_PLUGINS_PATHS := $(addprefix $(KREW_STORE),$(KREW_PLUGINS))
+
 SCRIPT_CONFIGS_STAMPS := $(patsubst %.sh,$(STAMPS)/%.stamp,$(wildcard scripts/*.sh))
 
 GEMS := # \
@@ -244,6 +265,7 @@ install: \
 	nvm \
 	sdkman \
 	script-config \
+	$(KREW_PLUGINS_PATHS) \
 	$(PYENV) \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
@@ -270,6 +292,11 @@ brew-install: |$(BREW_FORMULAS_PATHS) $(UNIVERSAL_CTAGS) $(BREW_CASKS_PATHS)
 
 $(BREW_FORMULAS_PATHS): |$(BREW) $(PREDEF_BREW_TAPS)
 	$(BREW) install $(patsubst .%,%,$(notdir $@))
+
+$(KREW_PLUGINS_PATHS): |$(BREW_FORMULAS_PATHS)
+	$(KUBECTL) krew install $(patsubst .%,%,$(notdir $@))
+
+krew-install: |$(KREW_PLUGINS_PATHS)
 
 $(UNIVERSAL_CTAGS):
 	$(BREW) install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -407,6 +434,7 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	git submdule update --init
 
 .PHONY: \
+	alacritty-config \
 	base16-shell \
 	brew \
 	brew-install \
@@ -422,6 +450,6 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	node \
 	nvm \
 	nvim-config \
-	alacritty-config \
+	krew-install \
 	script-config \
 	xcode
