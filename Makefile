@@ -185,6 +185,7 @@ BREW_CASKS := \
 	font-victor-mono-nerd-font \
 	google-drive \
 	google-chrome \
+	karabiner-elements \
 	keybase \
 	iterm2 \
 	meld \
