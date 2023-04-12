@@ -1,0 +1,8 @@
+# rotate tree
+ctrl + alt + cmd - r : yabai -m space --rotate 90
+
+# mirror tree y-axis
+ctrl + alt + cmd - y : yabai -m space --mirror y-axis
+
+# mirror tree x-axis
+ctrl + alt + cmd - x : yabai -m space --mirror x-axis
