@@ -123,6 +123,7 @@ UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
 	1password-cli \
+	alt-tab \
 	alacritty \
 	copyq \
 	docker \
@@ -195,6 +196,7 @@ BREW_CASKS := \
 	spotify \
 	telegram-desktop \
 	yt-music \
+	whatsapp \
 	zoom
 
 BREW_CASKS_PATHS := $(addprefix $(BREW_CASK_ROOM),$(BREW_CASKS))
