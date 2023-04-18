@@ -159,6 +159,7 @@ return require('packer').startup(function(use)
       require("plugins.ctrlp")
     end,
   })
+
   use({
     "plasticboy/vim-markdown",
     requires = {
@@ -168,12 +169,18 @@ return require('packer').startup(function(use)
       require("plugins.markdown")
     end,
   })
+
   use({
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
   })
+
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+  }
 
   if packer_bootstrap then
     require('packer').sync()
