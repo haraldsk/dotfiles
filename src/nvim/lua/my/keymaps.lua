@@ -4,9 +4,9 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap comma as leader key
-keymap("", ",", "<Nop>", opts)
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+keymap("", " ", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -31,11 +31,15 @@ keymap("n", "<A-Down>", ":resize +2<CR>", opts)
 keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
+
+
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
+keymap("n", "<M-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<M-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 
