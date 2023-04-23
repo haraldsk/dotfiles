@@ -152,6 +152,8 @@ return require('packer').startup(function(use)
   use({ "williamboman/mason.nvim",
       config = require("mason").setup()
   })
+
+  use 'jose-elias-alvarez/null-ls.nvim' -- formatting and linting
   -- }
 
   use({
