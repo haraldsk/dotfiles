@@ -78,6 +78,7 @@ return require('packer').startup(function(use)
       requires = "nvim-lua/plenary.nvim",
   }
 
+  use 'RRethy/vim-illuminate' -- highlighting other uses of the word under the cursor
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
