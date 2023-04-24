@@ -25,6 +25,7 @@ null_ls.setup({
     formatting.stylua,
     formatting.terraform_fmt,
     -- diagnostics.cfn_lint,
+    diagnostics.actionlint,
     diagnostics.shellcheck,
     diagnostics.terraform_validate,
     diagnostics.tfsec,

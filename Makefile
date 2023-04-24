@@ -43,6 +43,7 @@ BREW_FORMULAS := \
 	ack \
 	argocd \
 	aspell \
+	actionlint \
 	awscli \
 	autoconf \
 	azure-cli \
