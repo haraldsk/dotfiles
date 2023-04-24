@@ -65,6 +65,7 @@ BREW_FORMULAS := \
 	github-markdown-toc \
 	gnupg \
 	go \
+	golangci-lint \
 	gource \
 	grpcurl \
 	helm \

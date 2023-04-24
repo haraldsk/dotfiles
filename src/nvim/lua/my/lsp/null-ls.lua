@@ -26,6 +26,7 @@ null_ls.setup({
     formatting.terraform_fmt,
     -- diagnostics.cfn_lint,
     diagnostics.actionlint,
+    diagnostics.golangci_lint,
     diagnostics.shellcheck,
     diagnostics.terraform_validate,
     diagnostics.tfsec,
