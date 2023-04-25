@@ -37,6 +37,7 @@ null_ls.setup({
     -- diagnostics.flake8
   },
   -- formatting on save for formatters in null-ls
+  -- consider this, if not enough: https://github.com/lukas-reineke/lsp-format.nvim
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
