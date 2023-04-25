@@ -34,4 +34,22 @@ null_ls.setup({
     diagnostics.vale,
     -- diagnostics.flake8
   },
+  -- formatting on save for formatters in null-ls
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            filter = function()
+              return client.name == "null-ls"
+            end,
+          })
+        end,
+      })
+    end
+  end,
 })
