@@ -17,11 +17,12 @@ yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info
 yabai -m rule --add label="Messages" app="^Messages$" title=".*" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="Software Update" title="Software Update" manage=off
-yabai -m rule --add label="Spotify" app="^Spotify$" sticky=on layer=above manage=off
+yabai -m rule --add label="Spotify" app="^Spotify$" sticky=off manage=off
 yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off
-yabai -m rule --add label="Teams meeting" app="^Microsoft Teams$" title="^Meeting in.*" sticky=on layer=above manage=off
+yabai -m rule --add label="Microsoft Teams Managed" app="^Microsoft Teams$" sticky=off title!="^(Calendar)" manage=off
 yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
 yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="WhatsApp" app="^WhatsApp$" sticky=off manage=off
 
 yabai -m config --space 1                       \
     layout                       float
@@ -30,7 +31,7 @@ yabai -m config --space 1                       \
 # global settings
 yabai -m config                                 \
     mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
+    focus_follows_mouse          on             \
     window_origin_display        default        \
     window_placement             second_child   \
     window_topmost               off            \
@@ -51,10 +52,10 @@ yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  12             \
-    bottom_padding               12             \
-    left_padding                 12             \
-    right_padding                12             \
+    top_padding                  02             \
+    bottom_padding               02             \
+    left_padding                 02             \
+    right_padding                02             \
     window_gap                   06             \
     layout                       bsp            \
     mouse_modifier               fn             \
