@@ -16,7 +16,8 @@ src/vim/eclim
 ### NVIM ###
 src/nvim/plugin/packer_compiled.lua
 !src/nvim/undodir/.keep
-src/nvim/undodir/*.lua
+src/nvim/undodir/*
+src/nvim/undodir/.*
 
 ### OSX ###
 .DS_Store
