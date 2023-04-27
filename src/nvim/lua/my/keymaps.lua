@@ -36,6 +36,10 @@ keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Center the line while moving with C-u / C-d
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+
 -- Move text up and down
 keymap("n", "<M-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<M-j>", "<Esc>:m .+1<CR>==gi", opts)
