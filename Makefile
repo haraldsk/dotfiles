@@ -35,6 +35,7 @@ BREW_TAPS := \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
 	koekeishiya/homebrew-formulae \
+	spacelift-io/spacelift \
 	teamookla/homebrew-speedtest
 
 PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
@@ -97,6 +98,7 @@ BREW_FORMULAS := \
 	ripgrep \
 	ruby \
 	skhd \
+	spacectl \
 	spark \
 	speedtest \
 	sqlite \
