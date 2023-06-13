@@ -10,6 +10,9 @@ alt - y : yabai -m space --mirror y-axis
 ctrl + alt + cmd - x : yabai -m space --mirror x-axis
 alt - x : yabai -m space --mirror x-axis
 
+# toggle fullscreen
+alt - space : yabai -m window --toggle zoom-fullscreen
+
 # stack windows
 ctrl + alt + cmd - s : yabai -m space --layout stack
 
@@ -295,4 +298,3 @@ ctrl + alt - d : yabai -m space --layout float
 # ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
 ctrl + alt - h : yabai -m window --focus stack.prev
 ctrl + alt - l : yabai -m window --focus stack.next
-
