@@ -7,11 +7,13 @@ SCRIPTS := $(ROOT_DIR)/scripts
 STAMPS := $(ROOT_DIR)/.stamps
 
 DOT_CONFIG := $(HOME)/.config
+DOT_CONFIG_FILES :=  $(shell ls src/config)
+PREDEF_DOT_CONFIG_FILES := $(addprefix $(DOT_CONFIG)/,$(DOT_CONFIG_FILES))
 BIN := $(HOME)/bin
 
 DIRS := $(HOME)/src/github  $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
-DOTFILES := $(shell ls src)
-PREDEF_DOTFILES := $(addprefix $(HOME)/.,$(DOTFILES))
+DOT_FILES := $(shell ls src)
+PREDEF_DOT_FILES := $(addprefix $(HOME)/.,$(DOT_FILES))
 
 ifeq ($(shell uname -p),arm)
 BREW_PATH := /opt/homebrew
@@ -35,7 +37,7 @@ BREW_TAPS := \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
 	koekeishiya/homebrew-formulae \
-	spacelift-io/spacelift \
+	spacelift-io/homebrew-spacelift \
 	teamookla/homebrew-speedtest
 
 PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
@@ -85,6 +87,7 @@ BREW_FORMULAS := \
 	kustomize \
 	libpq \
 	make \
+	minikube \
 	mysql-client \
 	node \
 	opa \
@@ -98,6 +101,7 @@ BREW_FORMULAS := \
 	ripgrep \
 	ruby \
 	skhd \
+	shellcheck \
 	spacectl \
 	spark \
 	speedtest \
@@ -114,6 +118,7 @@ BREW_FORMULAS := \
 	tree \
 	up \
 	vale \
+	velero \
 	watch \
 	wget \
 	yamllint \
@@ -196,10 +201,12 @@ BREW_CASKS := \
 	meld \
 	messenger \
 	microsoft-teams \
+	orbstack \
 	slack \
 	spotify \
 	telegram-desktop \
 	yt-music \
+	via \
 	whatsapp \
 	zoom
 
@@ -259,9 +266,8 @@ install: \
 	$(BREW_CASKS_PATHS) \
 	base16-shell \
 	$(BREW_CELLAR)/neovim \
-	$(PREDEF_DOTFILES) \
-	$(DOT_CONFIG)/nvim \
-	$(DOT_CONFIG)/alacritty \
+	$(PREDEF_DOT_FILES) \
+	$(PREDEF_DOT_CONFIG_FILES) \
 	xcode \
 	scripts \
 	$(HOME)/bin \
@@ -315,8 +321,8 @@ gem-install: $(GEMS)
 $(GEMS): |$(BREW_FORMULAS_PATHS)
 	sudo gem install $@
 
-dotfiles: |$(PREDEF_DOTFILES)
-$(PREDEF_DOTFILES):
+dot-files: |$(PREDEF_DOT_FILES)
+$(PREDEF_DOT_FILES):
 	ln -Fsv $(PWD)/src/$(patsubst .%,%,$(notdir $@)) $@
 
 scripts: $(HOME)/scripts
@@ -327,13 +333,9 @@ bash_profile: $(HOME)/.bash_profile
 $(HOME)/.bash_profile: |$(HOME)/.bash_profile_mac
 	ln -Fsv $(HOME)/.bash_profile_mac $@
 
-alacritty-config: $(DOT_CONFIG)/alacritty
-$(DOT_CONFIG)/alacritty: |$(DOT_CONFIG)
-	ln -Fsv $(PWD)/src/$(patsubst .%,%,$(notdir $@)) $@
-
-nvim-config: $(DOT_CONFIG)/nvim
-$(DOT_CONFIG)/nvim: |$(DOT_CONFIG)
-	ln -Fsv $(PWD)/src/$(patsubst .%,%,$(notdir $@)) $@
+dot-config-files: |$(PREDEF_DOT_CONFIG_FILES)
+$(PREDEF_DOT_CONFIG_FILES):
+	ln -Fsv $(PWD)/src/config/$(patsubst .%,%,$(notdir $@)) $@
 
 xcode: |/Library/Developer/CommandLineTools
 /Library/Developer/CommandLineTools:
@@ -441,7 +443,6 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	git submdule update --init
 
 .PHONY: \
-	alacritty-config \
 	base16-shell \
 	brew \
 	brew-install \
@@ -450,13 +451,13 @@ $(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
 	brew-update \
 	dirs \
 	docker-lock \
-	dotfiles \
+	dot-files \
+	dot-config-files \
 	input-font \
 	install \
 	neovim \
 	node \
 	nvm \
-	nvim-config \
 	krew-install \
 	script-config \
 	xcode
