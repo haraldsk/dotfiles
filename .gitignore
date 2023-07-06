@@ -14,10 +14,10 @@ src/vim/plugin/eclim.vim
 src/vim/eclim
 
 ### NVIM ###
-src/nvim/plugin/packer_compiled.lua
-!src/nvim/undodir/.keep
-src/nvim/undodir/*
-src/nvim/undodir/.*
+src/config/nvim/plugin/packer_compiled.lua
+!src/config/nvim/undodir/.keep
+src/config/nvim/undodir/*
+src/config/nvim//undodir/.*
 
 ### OSX ###
 .DS_Store
