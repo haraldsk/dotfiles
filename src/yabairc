@@ -1,36 +1,17 @@
 #!/usr/bin/env bash
 
+# https://cbrgm.net/post/2021-05-5-setup-macos/
+
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
-
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-# don't manage these windows
-yabai -m rule --add label="1Password" app="^1Password$" manage=off
-yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
-yabai -m rule --add label="App Store" app="^App Store$" manage=off
-yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
-yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add label="Messages" app="^Messages$" title=".*" manage=off
-yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
-yabai -m rule --add label="Software Update" title="Software Update" manage=off
-yabai -m rule --add label="Spotify" app="^Spotify$" sticky=off manage=off
-yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off
-yabai -m rule --add label="Microsoft Teams Managed" app="^Microsoft Teams$" sticky=off title!="^(Calendar)" manage=off
-yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
-yabai -m rule --add label="mpv" app="^mpv$" manage=off
-yabai -m rule --add label="WhatsApp" app="^WhatsApp$" sticky=off manage=off
-yabai -m rule --add label="OrbStack" app="^OrbStack$" sticky=off manage=off
-yabai -m rule --add label="Cisco AnyConnect" app="^Cisco AnyConnect Secure Mobility Client$" sticky=off manage=off
-
+# space config
 yabai -m config --space 1                       \
     layout                       float
 
-
-# global settings
+# global config settings
 yabai -m config                                 \
     mouse_follows_focus          off            \
     focus_follows_mouse          autofocus      \
@@ -64,5 +45,26 @@ yabai -m config                                 \
     mouse_action1                move           \
     mouse_action2                resize         \
     mouse_drop_action            swap
+
+
+# do not manage the following windows
+yabai -m rule --add label="1Password" app="^1Password$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Messages" app="^Messages$" title=".*" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add label="Spotify" app="^Spotify$" sticky=off manage=off
+yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off
+yabai -m rule --add label="Microsoft Teams Managed" app="^Microsoft Teams$" sticky=off title!="^(Calendar)" manage=off
+yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="WhatsApp" app="^WhatsApp$" sticky=off manage=off
+yabai -m rule --add label="OrbStack" app="^OrbStack$" sticky=off manage=off
+yabai -m rule --add label="Cisco AnyConnect" app="^Cisco AnyConnect Secure Mobility Client$" sticky=off manage=off
 
 echo "yabai configuration loaded.."
