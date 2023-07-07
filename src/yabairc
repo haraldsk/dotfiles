@@ -33,7 +33,7 @@ yabai -m config --space 1                       \
 # global settings
 yabai -m config                                 \
     mouse_follows_focus          off            \
-    focus_follows_mouse          on             \
+    focus_follows_mouse          autofocus      \
     window_origin_display        default        \
     window_placement             second_child   \
     window_topmost               off            \
