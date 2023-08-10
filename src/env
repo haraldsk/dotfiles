@@ -46,7 +46,10 @@ if [[ -d "$HOME/.krew/bin" ]]; then
     export PATH="${PATH}:${HOME}/.krew/bin"
 fi
 
-# pyenv
+# pyenv and pyenv-virtualenv
 if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
-    export PATH="$PATH:$HOME/.pyenv/bin"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
