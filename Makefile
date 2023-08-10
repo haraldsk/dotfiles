@@ -396,7 +396,9 @@ $(PYENV): |/usr/bin/curl
 	curl https://pyenv.run | bash
 
 $(PYTHON_DIRS): |$(PYENV)
-	$(PYENV) install $(notdir $@)
+	# https://github.com/pyenv/pyenv/wiki/Common-build-problems#1-openssl-is-installed-to-an-uncommon-location
+	# https://github.com/python-poetry/poetry/issues/7695#issuecomment-1480617455
+	CONFIGURE_OPTS="-with-openssl=$(BREW_PATH)/opt/openssl" $(PYENV) install $(notdir $@)
 
 # $(PYENV_VERSIONS)/neovim2: $(PYTHON_2_DIR) |$(PYENV)
 # 	$(PYENV) virtualenv $(PYTHON_2) $(notdir $@)
