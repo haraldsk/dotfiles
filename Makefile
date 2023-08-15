@@ -70,6 +70,7 @@ BREW_FORMULAS := \
 	go \
 	golangci-lint \
 	gource \
+	grep \
 	grpcurl \
 	helm \
 	highlight \
