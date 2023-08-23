@@ -41,6 +41,9 @@ indent_size = 2
 [.babelrc]
 indent_size = 2
 
+[*.groovy]
+indent_size = 2
+
 # Terraform
 [*.tf]
 indent_size = 2
