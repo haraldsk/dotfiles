@@ -13,8 +13,8 @@ export CLICOLOR=true
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # vim
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # homebrew
 if [[ $(uname -p) -eq "arm" ]]; then
