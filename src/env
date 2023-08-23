@@ -53,3 +53,8 @@ if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+
+if [[ -x "$HOME/.poetry/bin/poetry" ]]; then
+    export PATH="$HOME/.poetry/bin:$PATH"
+fi
