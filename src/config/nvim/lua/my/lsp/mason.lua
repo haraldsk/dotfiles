@@ -1,9 +1,20 @@
 local servers = {
+  "ansiblels",
   "bashls",
+  "clangd",
+  -- "neocmake", -- requires cargo installer
+  "dockerls",
   "gopls",
+  "gradle_ls",
+  "groovyls",
+  "helm_ls",
   "jsonls",
+  "kotlin_language_server",
+  "lemminx", -- xml
   "lua_ls",
+  "marksman",
   "pyright",
+  "spectral", -- openapi
   "terraformls",
   "tflint",
   "yamlls",
