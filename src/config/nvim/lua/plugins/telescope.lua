@@ -15,6 +15,7 @@ require("telescope").setup({
     },
     buffers = {
       previewer = false,
+      sort_lastused = true, -- sort buffers by last used <3
       layout_config = {
         width = 80,
       },
