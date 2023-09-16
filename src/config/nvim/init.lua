@@ -1,5 +1,6 @@
 require('my.autopairs')
 require('my.colorscheme')
+require('my.dap')
 require('my.keymaps')
 require('my.lsp')
 require('my.nvim-tree')

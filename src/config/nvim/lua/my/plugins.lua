@@ -49,6 +49,10 @@ return require('packer').startup(function(use)
   use 'towolf/vim-helm'
   use 'tmux-plugins/vim-tmux' -- plugin for tmux.conf
 
+  -- dap
+  use "mfussenegger/nvim-dap"
+  use "leoluz/nvim-dap-go" -- delve integration
+
   -- colorschemes
   use 'lunarvim/darkplus.nvim'
   use 'lunarvim/Onedarker.nvim'
@@ -76,6 +80,20 @@ return require('packer').startup(function(use)
   use {
     "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
+  }
+
+  -- key mappings
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+        require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+      }
+    end
   }
 
   use 'RRethy/vim-illuminate' -- highlighting other uses of the word under the cursor

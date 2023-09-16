@@ -1,5 +1,6 @@
 ROOT_DIR := $(PWD)
 
+
 OS := $(shell uname)
 ARCH := $(shell uname -m)
 
@@ -36,6 +37,7 @@ BREW_TAPS := \
 	goles/homebrew-battery \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
+	incu6us/homebrew-tap \
 	koekeishiya/homebrew-formulae \
 	spacelift-io/homebrew-spacelift \
 	teamookla/homebrew-speedtest
@@ -58,6 +60,7 @@ BREW_FORMULAS := \
 	cmake \
 	cookiecutter \
 	coreutils \
+	delve \
 	diffutils \
 	docker-compose \
 	dyff \
@@ -70,6 +73,9 @@ BREW_FORMULAS := \
 	go \
 	goenv \
 	golangci-lint \
+	golines \
+	gofumpt \
+	goimports-reviser \
 	gource \
 	grep \
 	grpcurl \
@@ -131,6 +137,7 @@ BREW_FORMULAS := \
 
 BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
+
 BREW_CASKS := \
 	1password \
 	1password-cli \
@@ -195,7 +202,6 @@ BREW_CASKS := \
 	font-ubuntu-mono-nerd-font \
 	font-ubuntu-nerd-font \
 	font-victor-mono-nerd-font \
-	google-drive \
 	google-chrome \
 	karabiner-elements \
 	keybase \
@@ -206,7 +212,6 @@ BREW_CASKS := \
 	orbstack \
 	slack \
 	spotify \
-	telegram-desktop \
 	yt-music \
 	via \
 	whatsapp \
@@ -221,11 +226,9 @@ KREW_STORE := $(KREW_PATH)/store/
 
 KREW_PLUGINS := \
 	access-matrix \
-	advise-psp \
 	colorize-applied \
 	community-images \
 	cost \
-	flame \
 	neat  \
 	images \
 	kurt \
@@ -275,7 +278,6 @@ install: \
 	$(HOME)/bin \
 	bash_profile \
 	google-cloud-sdk \
-	google-cloud-sdk-gke-gcloud-auth-plugin \
 	node \
 	nvm \
 	sdkman \
@@ -429,6 +431,7 @@ $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)
 
 poetry: $(POETRY_HOME)
 $(POETRY_HOME): $(PYENV_VERSIONS)/poetry
+	# Need to use correct virtualenv for this to work
 	PATH="$(PYENV_VERSIONS)/poetry/bin:$$PATH" curl -sSL https://install.python-poetry.org | POETRY_HOME=$(POETRY_HOME) python3 -
 
 DOCKER_LOCK_VERSION := 0.8.10
