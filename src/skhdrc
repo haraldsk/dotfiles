@@ -2,10 +2,10 @@
 
 
 # change focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+alt - h : yabai -m window --focus west || yabai -m display --focus west
+alt - j : yabai -m window --focus south || yabai -m display --focus south
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 # shift window in current workspace
 alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
@@ -48,7 +48,7 @@ alt + shift - space : yabai -m window --toggle native-fullscreen
 # change layout of desktop
 alt + ctrl - a : yabai -m space --layout bsp
 alt + ctrl - s : yabai -m space --layout stack
-alt + ctrl - d : yabai -m space --layout float
+alt + ctrl - d : yabai -m space --layout float  --focus_follows_mouse off
 
 # cycle through stack windows
 # alt - p : yabai -m window --focus stack.next || yabai -m window --focus south

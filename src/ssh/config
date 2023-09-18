@@ -1,2 +1,9 @@
+Include ~/.orbstack/ssh/config
+
+Host git.aurora.skead.no
+    Port 7999
+    ForwardAgent yes
+    IdentityAgent /private/tmp/com.apple.launchd.rLOdfRycxf/Listeners
+
 Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

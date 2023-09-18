@@ -46,6 +46,7 @@ PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
 
 BREW_FORMULAS := \
 	ack \
+	ansible \
 	argocd \
 	aspell \
 	actionlint \
