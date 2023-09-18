@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
   -- syntax plugins
+  use 'mfussenegger/nvim-ansible' -- enables use of filetype yaml.ansible
   use 'fatih/vim-go'
   use 'towolf/vim-helm'
   use 'tmux-plugins/vim-tmux' -- plugin for tmux.conf
