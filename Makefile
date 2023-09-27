@@ -79,6 +79,7 @@ BREW_FORMULAS := \
 	goimports-reviser \
 	gource \
 	grep \
+	gradle \
 	grpcurl \
 	helm \
 	highlight \
@@ -90,6 +91,7 @@ BREW_FORMULAS := \
 	k3d \
 	k9s \
 	kind \
+	kotlin \
 	krew \
 	kubectx \
 	kubernetes-cli \
