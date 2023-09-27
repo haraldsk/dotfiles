@@ -19,6 +19,10 @@ src/config/nvim/plugin/packer_compiled.lua
 src/config/nvim/undodir/*
 src/config/nvim//undodir/.*
 
+### SSH ###
+src/ssh/id_*
+src/ssh/known_hosts
+
 ### OSX ###
 .DS_Store
 .AppleDouble
