@@ -40,9 +40,10 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator' -- jumping between vim and tmux
   use 'tpope/vim-commentary' -- easy commening
   use 'tpope/vim-dispatch' -- async dispatch into tmux panes, etc.
-  use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
+  -- use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
   use 'itspriddle/vim-marked' -- Marked plugin
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use 'famiu/bufdelete.nvim' -- Implements BDelete and BWipe for proper buffer deletion
 
   -- syntax plugins
   use 'mfussenegger/nvim-ansible' -- enables use of filetype yaml.ansible
@@ -174,13 +175,6 @@ return require('packer').startup(function(use)
 
   use 'jose-elias-alvarez/null-ls.nvim' -- formatting and linting
   -- }
-
-  use({
-    "ctrlpvim/ctrlp.vim",
-    config = function()
-      require("plugins.ctrlp")
-    end,
-  })
 
   use({
     "plasticboy/vim-markdown",
