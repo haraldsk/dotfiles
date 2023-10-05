@@ -9,6 +9,7 @@ local servers = {
   "groovyls",
   "helm_ls",
   "jsonls",
+  "jdtls",
   "kotlin_language_server",
   "lemminx", -- xml
   "lua_ls",
