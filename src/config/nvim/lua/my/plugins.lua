@@ -146,11 +146,19 @@ return require('packer').startup(function(use)
   use{ "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     requires = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
   }
 
+  use({ "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
+  use({ "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
   -- git integrations
   use 'tpope/vim-fugitive'
   use({
