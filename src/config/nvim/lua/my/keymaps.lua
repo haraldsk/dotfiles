@@ -68,10 +68,12 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 --
+local status_ok, which_key = pcall(require, "which-key")
+if not status_ok then
+  return
+end
 
-local wk = require("which-key")
-
-wk.register({
+which_key.register({
   -- dap
   ["<leader>d"] = { name = "+dap", },
   ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Toggle Breakpoint" }, -- create a binding with label
