@@ -111,6 +111,12 @@ nvim_tree.setup {
     enable = true,
     update_cwd = true,
   },
+  view = {
+      width = {
+        min = 30,
+        max = 70,
+    },
+  },
   renderer = {
     root_folder_modifier = ":t",
     icons = {
