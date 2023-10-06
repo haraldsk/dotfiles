@@ -208,6 +208,7 @@ BREW_CASKS := \
 	google-chrome \
 	karabiner-elements \
 	keybase \
+	intellij-idea-ce \
 	iterm2 \
 	meld \
 	messenger \
