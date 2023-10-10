@@ -206,6 +206,7 @@ BREW_CASKS := \
 	font-ubuntu-mono-nerd-font \
 	font-ubuntu-nerd-font \
 	font-victor-mono-nerd-font \
+	ginkgo \
 	google-chrome \
 	karabiner-elements \
 	keybase \
