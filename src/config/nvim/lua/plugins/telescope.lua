@@ -44,6 +44,8 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc="Live grep"})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers"})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Vim help tags"})
+vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Vim marks"})
+vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Vim registers"})
 
 vim.keymap.set("n", "<leader>fgb", builtin.git_branches, { desc="Git branch"})
 vim.keymap.set("n", "<leader>fgc", builtin.git_commits, { desc="Git commit"})
@@ -61,4 +63,4 @@ vim.keymap.set("n", "<leader>fld",  builtin.lsp_definitions, { desc = "LSP defin
 vim.keymap.set("n", "<leader>flt",  builtin.lsp_type_definitions, { desc = "LSP type defintions" })
 
 
-vim.keymap.set("n", "<leader>fn", "<cmd>Telescope neoclip<CR>", { desc = "Clipboard"})
+vim.keymap.set("n", "<leader>fn", "<cmd>Telescope neoclip<CR>", { desc = "Neoclip clipboard"})
