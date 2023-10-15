@@ -54,6 +54,10 @@ configs.setup({
 
         ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
         ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+
+        ["agc"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+        ["igc"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
+
         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
     },
   },
