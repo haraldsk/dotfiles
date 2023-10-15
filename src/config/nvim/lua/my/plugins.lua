@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
   use 'RRethy/vim-illuminate' -- highlighting other uses of the word under the cursor
   use({
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    -- tag = '0.1.1',
     requires = {
       {'nvim-lua/plenary.nvim'},
       { "kyazdani42/nvim-web-devicons" },
@@ -137,7 +137,7 @@ return require('packer').startup(function(use)
 
   use({
      'akinsho/bufferline.nvim',
-      tag = "v3.*",
+      -- tag = "v3.*",
       requires = 'nvim-tree/nvim-web-devicons',
     config = function ()
       require("bufferline").setup()
