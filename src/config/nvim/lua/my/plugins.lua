@@ -74,6 +74,18 @@ return require('packer').startup(function(use)
 	use { "hrsh7th/cmp-nvim-lsp", }
 	use { "hrsh7th/cmp-nvim-lua", }
 
+  use {
+  "AckslD/nvim-neoclip.lua",
+  requires = {
+    -- you'll need at least one of these
+    {'nvim-telescope/telescope.nvim'},
+    -- {'ibhagwan/fzf-lua'},
+  },
+  config = function()
+    require('neoclip').setup()
+  end,
+}
+
   -- folding
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 	-- Snippets
