@@ -93,6 +93,7 @@ BREW_FORMULAS := \
 	kind \
 	kotlin \
 	krew \
+	kubebuilder \
 	kubectx \
 	kubernetes-cli \
 	kustomize \
