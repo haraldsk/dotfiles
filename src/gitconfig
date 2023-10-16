@@ -60,8 +60,8 @@
 	defaultBranch = main
 [remote "origin"]
 	prune = true
-[url "git@github.com:coopnorge/"]
-    insteadOf = https://github.com/coopnorge/
+[url "git@ssh.github.com:haraldsk/"]
+    insteadOf = https://github.com/haraldsk/
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [rebase]
