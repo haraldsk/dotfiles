@@ -85,10 +85,21 @@ return require('packer').startup(function(use)
   config = function()
     require('neoclip').setup()
   end,
-}
+  }
 
   -- folding
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+  -- indent-blankline
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('ibl').setup{
+        indent = {  char = "" },
+      }
+    end,
+  }
+
 	-- Snippets
   use { "L3MON4D3/LuaSnip", } --snippet engine
   use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
