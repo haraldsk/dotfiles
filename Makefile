@@ -61,6 +61,7 @@ BREW_FORMULAS := \
 	cmake \
 	cookiecutter \
 	coreutils \
+	cosign \
 	delve \
 	diffutils \
 	docker-compose \
@@ -206,7 +207,6 @@ BREW_CASKS := \
 	font-ubuntu-mono-nerd-font \
 	font-ubuntu-nerd-font \
 	font-victor-mono-nerd-font \
-	ginkgo \
 	google-chrome \
 	karabiner-elements \
 	keybase \
@@ -238,6 +238,7 @@ KREW_PLUGINS := \
 	neat  \
 	images \
 	kurt \
+	kyverno \
 	mtail \
 	ns \
 	viewnode \
