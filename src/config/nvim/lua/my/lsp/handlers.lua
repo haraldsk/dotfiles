@@ -140,6 +140,13 @@ M.on_attach = function(client, bufnr)
     return
   end
   illuminate.on_attach(client)
+
+  local inlay_ok, lsp_inlayhints = pcall(require, "lsp-inlayhints")
+  if not inlay_ok then
+    return
+  end
+  lsp_inlayhints.on_attach(client, bufnr)
+
 end
 
 return M
