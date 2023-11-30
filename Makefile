@@ -107,6 +107,7 @@ BREW_FORMULAS := \
 	openssl@1.1 \
 	openssl@3 \
 	pkg-config \
+	protobuf \
 	pstree \
 	pwgen \
 	readline \
