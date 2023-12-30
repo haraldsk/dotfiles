@@ -64,3 +64,4 @@ vim.keymap.set("n", "<leader>flt",  builtin.lsp_type_definitions, { desc = "LSP 
 
 
 vim.keymap.set("n", "<leader>fn", "<cmd>Telescope neoclip<CR>", { desc = "Neoclip clipboard"})
+vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Todo list "})
