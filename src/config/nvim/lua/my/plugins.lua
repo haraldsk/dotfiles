@@ -75,6 +75,10 @@ return require('packer').startup(function(use)
 	use { "hrsh7th/cmp-nvim-lua", }
   use { "hrsh7th/cmp-nvim-lsp-signature-help", }
 
+	-- Snippets
+  use { "L3MON4D3/LuaSnip", } --snippet engine
+  use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
+
   use {
   "AckslD/nvim-neoclip.lua",
   requires = {
@@ -99,10 +103,6 @@ return require('packer').startup(function(use)
       }
     end,
   }
-
-	-- Snippets
-  use { "L3MON4D3/LuaSnip", } --snippet engine
-  use { "rafamadriz/friendly-snippets", } -- a bunch of snippets to use
 
   --- Todo
   use {
