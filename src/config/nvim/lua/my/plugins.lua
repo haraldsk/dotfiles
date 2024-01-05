@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
   -- Completions
   use { "hrsh7th/nvim-cmp",
     config = function()
-      require("plugins.cmp")
+      require("plugins.completion")
     end,
   } -- The completion plugin
   use { "hrsh7th/cmp-buffer", } -- buffer completions
