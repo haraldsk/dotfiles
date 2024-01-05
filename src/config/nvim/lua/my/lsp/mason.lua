@@ -6,7 +6,7 @@ local servers = {
   "dockerls",
   "gopls",
   "gradle_ls",
-  "groovyls",
+  -- "groovyls",
   "helm_ls",
   "jsonls",
   "jdtls",
