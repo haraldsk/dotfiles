@@ -9,7 +9,10 @@ return {
       staticcheck = true,
       -- gofumpt = true, -- using null-ls here
       completeUnimported = true, -- automatically import packages
-      usePlaceholders = true, -- placeholders enables placeholders for function parameters or struct fields in completion responses.
+      -- placeholders enables placeholders for function parameters or struct fields in completion responses.
+      -- this is nice in theory, but makes a mess with other plugins like lsp
+      -- inlayhings and completion plugins
+      usePlaceholders = false,
 
 
       hints = {
