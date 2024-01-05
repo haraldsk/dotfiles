@@ -114,6 +114,7 @@ BREW_FORMULAS := \
 	reattach-to-user-namespace \
 	ripgrep \
 	ruby \
+	rust \
 	skhd \
 	shellcheck \
 	spacectl \
