@@ -14,20 +14,18 @@ if not vscode_status_ok then
 end
 
 vscode.lazy_load()
---
--- Disable this for now, injects double the amounts of parenthesis.
--- Would be nice to disable argument filling on function autocomplete and use this
--- instead
--- If you want insert `(` after select function or method item
--- local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
--- if not cmp_autopairs_status_ok then
---   return
--- end
 
--- cmp.event:on(
---   'confirm_done',
---   cmp_autopairs.on_confirm_done()
--- )
+-- If you want insert `(` after select function or method item
+-- uses autopairs plugin
+local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not cmp_autopairs_status_ok then
+  return
+end
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
