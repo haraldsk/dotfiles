@@ -1,5 +1,4 @@
 -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 return {
   settings = {
