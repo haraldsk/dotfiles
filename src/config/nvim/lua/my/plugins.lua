@@ -163,12 +163,18 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- custom bufferline plugin
   use({
     "akinsho/bufferline.nvim",
     -- tag = "v3.*",
     requires = "nvim-tree/nvim-web-devicons",
   })
 
+  -- custom statusline plugin
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", opt = true },
+  })
   -- treesitter
   use({
     "nvim-treesitter/nvim-treesitter",

@@ -1,5 +1,6 @@
 require("my.autopairs")
 require("my.bufferline")
+require("my.lualine")
 require("my.colorscheme")
 require("my.dap")
 require("my.keymaps")
