@@ -61,6 +61,13 @@ return require("packer").startup(function(use)
   -- dap
   use("mfussenegger/nvim-dap")
   use("leoluz/nvim-dap-go") -- delve integration
+  use({
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("dapui").setup()
+    end,
+    requires = { "mfussenegger/nvim-dap" },
+  })
 
   -- colorschemes
   use("lunarvim/darkplus.nvim")
