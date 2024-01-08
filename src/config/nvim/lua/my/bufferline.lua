@@ -51,10 +51,10 @@ bufferline.setup({
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local s = " "
       local sym_dict = {
-        error = "",
-        warning = "",
-        hint = "",
-        info = "",
+        error = "󰅚",
+        warning = "󰀪",
+        hint = "󰌶",
+        info = "󰋽",
       }
 
       -- debug, in case new keys show up
@@ -63,7 +63,7 @@ bufferline.setup({
       -- end
 
       if diagnostics_dict["error"] then
-        s = s .. diagnostics_dict["error"] .. " " .. sym_dict["error"]
+        s = s .. sym_dict["error"] .. " " .. diagnostics_dict["error"]
         if
           diagnostics_dict["warning"]
           or diagnostics_dict["hint"]
@@ -74,21 +74,21 @@ bufferline.setup({
       end
 
       if diagnostics_dict["warning"] then
-        s = s .. diagnostics_dict["warning"] .. " " .. sym_dict["warning"]
+        s = s .. sym_dict["warning"] .. " " .. diagnostics_dict["warning"]
         if diagnostics_dict["hint"] or diagnostics_dict["info"] then
           s = s .. " "
         end
       end
 
       if diagnostics_dict["info"] then
-        s = s .. diagnostics_dict["info"] .. " " .. sym_dict["info"]
+        s = s .. sym_dict["info"] .. " " .. diagnostics_dict["info"]
         if diagnostics_dict["hint"] then
           s = s .. " "
         end
       end
 
       if diagnostics_dict["hint"] then
-        s = s .. diagnostics_dict["hint"] .. " " .. sym_dict["hint"]
+        s = s .. sym_dict["hint"] .. " " .. diagnostics_dict["hint"]
       end
 
       return s
