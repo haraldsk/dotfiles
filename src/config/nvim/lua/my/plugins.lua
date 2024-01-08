@@ -163,6 +163,11 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- notification widget
+  use({
+    "j-hui/fidget.nvim",
+  })
+
   -- custom bufferline plugin
   use({
     "akinsho/bufferline.nvim",
