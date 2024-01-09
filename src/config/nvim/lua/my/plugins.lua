@@ -45,7 +45,7 @@ packer.init({
 return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
   use("christoomey/vim-tmux-navigator") -- jumping between vim and tmux
-  use("tpope/vim-commentary") -- easy commening
+  use("numToStr/Comment.nvim") -- nvim comment plugin with treesitter support
   use("tpope/vim-dispatch") -- async dispatch into tmux panes, etc.
   -- use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
   use("itspriddle/vim-marked") -- Marked plugin
