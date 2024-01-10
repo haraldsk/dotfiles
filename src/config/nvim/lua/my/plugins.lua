@@ -150,17 +150,14 @@ return require("packer").startup(function(use)
   use("RRethy/vim-illuminate") -- highlighting other uses of the word under the cursor
   use({
     "nvim-telescope/telescope.nvim",
-    -- tag = '0.1.1',
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "kyazdani42/nvim-web-devicons" },
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
+      { "jonarrien/telescope-cmdline.nvim" },
     },
-    config = function()
-      require("plugins.telescope")
-    end,
   })
 
   use({
