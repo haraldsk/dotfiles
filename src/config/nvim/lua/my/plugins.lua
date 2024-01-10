@@ -248,6 +248,8 @@ return require("packer").startup(function(use)
 
   use("mbbill/undotree")
 
+  use("akinsho/toggleterm.nvim")
+
   use({
     "kylechui/nvim-surround",
     config = function()
