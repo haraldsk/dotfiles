@@ -232,9 +232,6 @@ return require("packer").startup(function(use)
     requires = {
       { "godlygeek/tabular" },
     },
-    config = function()
-      require("plugins.markdown")
-    end,
   })
 
   use({
