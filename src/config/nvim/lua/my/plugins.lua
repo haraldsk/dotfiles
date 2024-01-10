@@ -198,12 +198,7 @@ return require("packer").startup(function(use)
   })
   -- git integrations
   use("tpope/vim-fugitive")
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("plugins.gitsigns")
-    end,
-  })
+  use("lewis6991/gitsigns.nvim")
 
   -- lsp -- load order important {
   use({
