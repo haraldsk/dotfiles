@@ -47,51 +47,37 @@ gitsigns.setup({
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
+    local function map(mode, l, r, desc)
+      vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
     end
 
     -- Navigation
-    map("n", ">c", function()
-      if vim.wo.diff then
-        return "]c"
-      end
-      vim.schedule(function()
-        gs.next_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true })
-
-    map("n", "<c", function()
-      if vim.wo.diff then
-        return "[c"
-      end
-      vim.schedule(function()
-        gs.prev_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true })
+    map("n", "]g", gs.next_hunk, "Next hunk")
+    map("n", "[g", gs.prev_hunk, "Prev hunk")
 
     -- Actions
-    map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-    map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-    map("n", "<leader>hS", gs.stage_buffer)
-    map("n", "<leader>hu", gs.undo_stage_hunk)
-    map("n", "<leader>hR", gs.reset_buffer)
-    map("n", "<leader>hp", gs.preview_hunk)
+    map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage  unk")
+    map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
+    map("n", "<leader>hS", gs.stage_buffer, "Stage buffer")
+    map("n", "<leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
+    map("n", "<leader>hR", gs.reset_buffer, "Reset stage buffer")
+    map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
     map("n", "<leader>hb", function()
       gs.blame_line({ full = true })
     end)
-    map("n", "<leader>tb", gs.toggle_current_line_blame)
-    map("n", "<leader>hd", gs.diffthis)
+    map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle git blame")
+    map("n", "<leader>hd", gs.diffthis, "Diff")
     map("n", "<leader>hD", function()
       gs.diffthis("~")
-    end)
-    map("n", "<leader>td", gs.toggle_deleted)
+    end, "Extreme diff")
+    map("n", "<leader>td", gs.toggle_deleted, "Delete show toggle")
 
     -- Text object
-    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+    map(
+      { "o", "x" },
+      "ih",
+      ":<C-U>Gitsigns select_hunk<CR>",
+      "Select hunk as text object"
+    )
   end,
 })
