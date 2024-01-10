@@ -1,4 +1,5 @@
 require("my.autopairs")
+require("my.aerial")
 require("my.bufferline")
 require("my.colorscheme")
 require("my.comment")

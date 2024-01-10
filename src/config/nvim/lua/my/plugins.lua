@@ -160,22 +160,14 @@ return require("packer").startup(function(use)
     },
   })
 
-  use({
-    "stevearc/aerial.nvim",
-    config = function()
-      require("plugins.aerial")
-    end,
-  })
+  use({ "stevearc/aerial.nvim" })
 
   -- notification widget
-  use({
-    "j-hui/fidget.nvim",
-  })
+  use({ "j-hui/fidget.nvim" })
 
   -- custom bufferline plugin
   use({
     "akinsho/bufferline.nvim",
-    -- tag = "v3.*",
     requires = "nvim-tree/nvim-web-devicons",
   })
 
