@@ -75,12 +75,7 @@ return require("packer").startup(function(use)
   use("folke/tokyonight.nvim")
 
   -- Completions
-  use({
-    "hrsh7th/nvim-cmp",
-    config = function()
-      require("plugins.completion")
-    end,
-  }) -- The completion plugin
+  use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
   use({ "hrsh7th/cmp-buffer" }) -- buffer completions
   use({ "hrsh7th/cmp-path" }) -- path completions
   -- use({"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}) -- github plugin requires gh auth and GITHUB_API_TOKEN
