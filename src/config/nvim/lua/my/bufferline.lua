@@ -3,8 +3,7 @@ if not status_ok then
   return
 end
 
-local status_ok_nvim_web_devicons, nvim_web_devicons =
-  pcall(require, "nvim-web-devicons")
+local status_ok_nvim_web_devicons, nvim_web_devicons = pcall(require, "nvim-web-devicons")
 if not status_ok_nvim_web_devicons then
   return
 end
@@ -64,11 +63,7 @@ bufferline.setup({
 
       if diagnostics_dict["error"] then
         s = s .. sym_dict["error"] .. " " .. diagnostics_dict["error"]
-        if
-          diagnostics_dict["warning"]
-          or diagnostics_dict["hint"]
-          or diagnostics_dict["info"]
-        then
+        if diagnostics_dict["warning"] or diagnostics_dict["hint"] or diagnostics_dict["info"] then
           s = s .. " "
         end
       end
@@ -136,10 +131,7 @@ bufferline.setup({
       -- This can be used to change how bufferline fetches the icon
       -- for an element e.g. a buffer or a tab.
       -- e.g.
-      local icon, hl = nvim_web_devicons.get_icon_by_filetype(
-        element.filetype,
-        { default = false }
-      )
+      local icon, hl = nvim_web_devicons.get_icon_by_filetype(element.filetype, { default = false })
       return icon, hl
       -- or
       -- local custom_map = {my_thing_ft: {icon = "my_thing_icon", hl}}
@@ -163,7 +155,7 @@ bufferline.setup({
       delay = 200,
       reveal = { "close" },
     },
-    sort_by = "relative_directory",
+    sort_by = "insert_after_current",
     -- sort_by = 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
     --     -- add custom logic
     --     return buffer_a.modified > buffer_b.modified
