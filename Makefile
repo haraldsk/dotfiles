@@ -209,7 +209,6 @@ BREW_CASKS := \
 	font-ubuntu-mono-nerd-font \
 	font-ubuntu-nerd-font \
 	font-victor-mono-nerd-font \
-	google-chrome \
 	karabiner-elements \
 	keybase \
 	intellij-idea-ce \
@@ -257,10 +256,10 @@ PYENV_DIR := $(HOME)/.pyenv
 PYENV := $(PYENV_DIR)/bin/pyenv
 PYENV_VERSIONS := $(PYENV_DIR)/versions
 PYTHON_2_MINOR := 2.7
-PYTHON_3_MINOR := 3.9
+PYTHON_3_MINOR := 3.10
 
 PYTHON_2 := $(PYTHON_2_MINOR).18
-PYTHON_3 := $(PYTHON_3_MINOR).13
+PYTHON_3 := $(PYTHON_3_MINOR).10
 
 PYTHON_2_DIR := $(PYENV_VERSIONS)/$(PYTHON_2)
 PYTHON_3_DIR := $(PYENV_VERSIONS)/$(PYTHON_3)
