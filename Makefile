@@ -12,7 +12,7 @@ DOT_CONFIG_FILES :=  $(shell ls src/config)
 PREDEF_DOT_CONFIG_FILES := $(addprefix $(DOT_CONFIG)/,$(DOT_CONFIG_FILES))
 BIN := $(HOME)/bin
 
-DIRS := $(HOME)/src/github  $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
+DIRS := $(HOME)/src/github.com $(BIN) $(DOT_CONFIG) $(STAMPS) $(STAMPS)/scripts
 DOT_FILES := $(shell ls src)
 PREDEF_DOT_FILES := $(addprefix $(HOME)/.,$(DOT_FILES))
 
