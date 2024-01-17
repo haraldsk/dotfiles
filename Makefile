@@ -161,7 +161,7 @@ BREW_CASKS := \
 	font-agave-nerd-font \
 	font-anonymice-nerd-font \
 	font-arimo-nerd-font \
-	font-aurulent-nerd-font \
+	font-aurulent-sans-mono-nerd-font \
 	font-bigblue-terminal-nerd-font \
 	font-bitstream-vera-sans-mono-nerd-font \
 	font-blex-mono-nerd-font \
