@@ -13,6 +13,8 @@ local servers = {
   "lua_ls",
   "marksman",
   "neocmake", -- requires cargo installer
+  "puppet",
+  -- "salt_ls",  -- breaks on  yaml package
   "spectral", -- openapi
   "terraformls",
   "yamlls",
