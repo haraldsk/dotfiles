@@ -22,6 +22,7 @@ src/config/nvim//undodir/.*
 ### SSH ###
 src/ssh/id_*
 src/ssh/known_hosts
+src/ssh/conf.d/*.private.conf
 
 ### OSX ###
 .DS_Store

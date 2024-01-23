@@ -62,3 +62,8 @@ fi
 if [[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
+
+# puppet tools require ruby@2.7
+if [[ -d "/opt/homebrew/opt/ruby@2.7/bin" ]]; then
+    export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
+fi

@@ -1,22 +1,28 @@
-[user]
-	name = Harald Skoglund
-	email = skoglund@gmail.com
-	# signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC934WHLONPIsKOE8tN0Up57T8k6Rh8qg0GhmRWQmsUlzLk8Ug239yqZOwlAWbv4YjTYukKaDT6lNKZCPYJ8zbiwa2qtmXka6SR8BkoNrhKhYgh4IhTxNMW2kWrKHWtcac8JqSgqgJoN4vG+iqTuV8ABpRU/TRY0hu85vBlr8ZNEkKfhuFhHw2Acg0b6aeqn9XYxVMCaAStdcdkFzuXaVIaG+FSCI5of5ucMg/sUUNOCNOtTWj3RbL0XwyTjYFOl1H2pen0XlZwvGh6UF3sTDDBEHiAmnQ827iDdZfowOP2et3v3WW6mS9jyxudY12ITj9CpSoJJsT/msqJT9sX+PNa71FD8X0biGK64i9dJBZG9LyMajW0ZDISdgdRONzCY7h3ac0wazY25jJXe1ZYwGj3l0E73fE8BgOOC/bEDXgeL1qNgsFinK2zUVnP7Y1A229YX8b+o9xLof+mwByU7Fs84agROpZjxU3jm3rs+kN5EG207lcfrgVGh/aefHZ+IfadOpczyk2/ctOD6ZFmr0/1tFzs9xuExY2BQfOfTt1Dfbbyv3AdcwKYoEjmkticwsKZzp4ZqLlLLgK74fvp8wJcVOCCpiWBBTX8P3BzHyLJeyZmVubHHAJ6rUIgzcber0h9eYaJh5w+2snrKXWqPUbzziXG60o1VRxN6oLdD3G9Pw==
-	# signingkey =
+[includeIf "gitdir:~/src/github.com/nrkno/"]
+  path = .gitconfig-nrkno
+
+[includeIf "gitdir:~/src/github.com/haraldsk/"]
+  path = .gitconfig-haraldsk
+
 [color]
 	ui = auto
 	ui = true
+
 [core]
 	autocrlf = input
-	#editor = nvim
-	editor = vim
-	excludesfile = /Users/harald/.gitignore_global
+	editor = nvim
+	excludesfile = /Users/harald.skoglund/.gitignore_global
+
 [pull]
 	rebase = true
+
 [push]
 	default = simple
+    autoSetupRemote = true
+
 [log]
 	date = relative
+
 [alias]
 	lg = log --date-order --graph --decorate --pretty=format:'%C(yellow)%h%Creset %G? %C(magenta)%d%Creset %s %C(blue)(%an)%Creset %C(green)%cr%Creset'
 	lga = log --all --date-order --graph --decorate --pretty=format:'%C(yellow)%h%Creset %G? %C(magenta)%d%Creset %s %C(blue)(%an)%Creset %C(green)%cr%Creset'
@@ -29,40 +35,26 @@
 	update-pr = update-branch
 	merge-pr = merge-branch
 	delete-pr = delete-branch
-[github]
-	user = nhhagen
+
 [diff]
 	tool = vimdiff
+
 [difftool]
 	prompt = false
+
 [fetch]
 	prune = true
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-[commit]
-	gpgsign = false
-[gpg]
-	program = gpg
-	format = ssh
-[gitflow "feature.finish"]
-	keepremote = true
-[gitflow "release.finish"]
-	keepremote = true
-[gitflow "hotfix.finish"]
-	keepremote = true
-[gitflow "bugfix.finish"]
-	keepremote = true
-[gitflow "support.finish"]
-	keepremote = true
+
 [init]
 	defaultBranch = main
+
 [remote "origin"]
 	prune = true
-[url "git@ssh.github.com:haraldsk/"]
-    insteadOf = https://github.com/haraldsk/
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
 [rebase]
 	autosquash = true

@@ -37,6 +37,7 @@ BREW_TAPS := \
 	goles/homebrew-battery \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
+	puppetlabs/puppet \
 	incu6us/homebrew-tap \
 	koekeishiya/homebrew-formulae \
 	spacelift-io/homebrew-spacelift \
@@ -104,6 +105,7 @@ BREW_FORMULAS := \
 	mysql-client \
 	node \
 	opa \
+	openssh \
 	openssl@1.1 \
 	openssl@3 \
 	pkg-config \
@@ -217,6 +219,7 @@ BREW_CASKS := \
 	messenger \
 	microsoft-teams \
 	orbstack \
+	puppet-agent \
 	slack \
 	spotify \
 	yt-music \

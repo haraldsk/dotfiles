@@ -1,5 +1,15 @@
 # set -e
 
+# open file descriptor 5 such that anything written to /dev/fd/5
+# is piped through ts and then to /tmp/timestamps
+# exec 5> >(ts -i "%.s" >> /tmp/timestamps)
+
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
+# export BASH_XTRACEFD="5"
+
+# Enable tracing
+# set -x
+
 source $HOME/.alias
 source $HOME/.env
 source $HOME/.completion
@@ -10,3 +20,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(zoxide init bash)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Add NRKSSH to PATH
+eval "$($HOME/bin/nrkssh shellenv)"
