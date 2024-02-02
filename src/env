@@ -67,3 +67,8 @@ fi
 if [[ -d "/opt/homebrew/opt/ruby@2.7/bin" ]]; then
     export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
 fi
+
+# set paths for homebrew for man pages and scripts
+if [[ -n $(which brew) ]]; then
+    eval $(brew shellenv)
+fi
