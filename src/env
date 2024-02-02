@@ -72,3 +72,8 @@ fi
 if [[ -n $(which brew) ]]; then
     eval $(brew shellenv)
 fi
+
+# load local env files which are not in git
+for env_file in $(echo $HOME/.env.*); do
+    source ${env_file}
+done
