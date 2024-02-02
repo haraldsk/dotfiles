@@ -135,6 +135,7 @@ BREW_FORMULAS := \
 	tree \
 	up \
 	vale \
+	vault \
 	velero \
 	watch \
 	wget \
