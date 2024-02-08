@@ -13,6 +13,8 @@ local diagnostics = null_ls.builtins.diagnostics
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+-- Docs on how to configure plugins:
+-- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
 null_ls.setup({
   debug = false,
   sources = {
@@ -26,6 +28,9 @@ null_ls.setup({
     formatting.hclfmt,
     formatting.markdownlint,
     formatting.markdown_toc,
+    formatting.puppet_lint.with({
+      command = "/opt/homebrew/lib/ruby/gems/2.7.0/bin/puppet-lint",
+    }),
     formatting.stylua,
     formatting.terraform_fmt,
     -- diagnostics.cfn_lint,
