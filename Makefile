@@ -67,6 +67,7 @@ BREW_FORMULAS := \
 	diffutils \
 	docker-compose \
 	dyff \
+	eza \
 	fd \
 	fzf \
 	gh \
