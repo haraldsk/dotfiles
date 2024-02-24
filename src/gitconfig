@@ -4,6 +4,10 @@
 [includeIf "gitdir:~/src/github.com/haraldsk/"]
   path = .gitconfig-haraldsk
 
+[includeIf "gitdir:~/src/github.com/systek/"]
+  path = .gitconfig-systek
+
+
 [color]
 	ui = auto
 	ui = true
