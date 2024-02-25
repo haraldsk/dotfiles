@@ -27,7 +27,6 @@ null_ls.setup({
     -- formatting.golines,
     formatting.hclfmt,
     formatting.markdownlint,
-    formatting.markdown_toc,
     formatting.puppet_lint.with({
       command = "/opt/homebrew/lib/ruby/gems/2.7.0/bin/puppet-lint",
     }),
@@ -36,7 +35,6 @@ null_ls.setup({
     -- diagnostics.cfn_lint,
     diagnostics.actionlint,
     diagnostics.golangci_lint,
-    diagnostics.shellcheck,
     diagnostics.terraform_validate,
     diagnostics.tfsec,
     diagnostics.yamllint,
