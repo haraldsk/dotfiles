@@ -37,7 +37,7 @@ BREW_TAPS := \
 	goles/homebrew-battery \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
-	puppetlabs/puppet \
+	puppetlabs/homebrew-puppet \
 	incu6us/homebrew-tap \
 	koekeishiya/homebrew-formulae \
 	spacelift-io/homebrew-spacelift \
@@ -89,6 +89,7 @@ BREW_FORMULAS := \
 	httpie \
 	ipcalc \
 	istioctl \
+	infracost \
 	yabai \
 	jq \
 	k3d \
