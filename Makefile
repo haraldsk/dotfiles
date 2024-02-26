@@ -278,7 +278,7 @@ PYTHON_3_NEOVIM_LIB := $(PYENV_VERSIONS)/neovim3/lib/python$(PYTHON_3_MINOR)/sit
 POETRY_HOME := $(HOME)/.poetry
 
 install: \
-	$(HOME)/src/github \
+	$(HOME)/src/github.com \
 	$(PREDEF_BREW_TAPS) \
 	$(BREW_FORMULAS_PATHS) \
 	$(UNIVERSAL_CTAGS) \
