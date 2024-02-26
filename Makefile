@@ -216,6 +216,7 @@ BREW_CASKS := \
 	font-victor-mono-nerd-font \
 	karabiner-elements \
 	keybase \
+	kubecontext \
 	intellij-idea-ce \
 	iterm2 \
 	meld \
@@ -241,6 +242,7 @@ KREW_PLUGINS := \
 	access-matrix \
 	colorize-applied \
 	community-images \
+	ctx \
 	cost \
 	neat  \
 	images \
