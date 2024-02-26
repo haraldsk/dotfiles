@@ -26,6 +26,8 @@ unimpaired.setup({
       description = "Jump to last file in arglist",
       dot_repeat = false,
     },
+    -- Need to map this to BufferLineCyclePrev and BufferLineCycleNext
+    -- to cycle by how BufferLine is sorting the Buffers
     bprevious = {
       mapping = "[b",
       description = "Jump to [count] previous buffer",
