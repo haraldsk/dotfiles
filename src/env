@@ -74,6 +74,6 @@ if [[ -n $(which brew) ]]; then
 fi
 
 # load local env files which are not in git
-for env_file in $(echo $HOME/.env.*); do
+for env_file in $(find $HOME -maxdepth 1 -name '.env.*'); do
     source ${env_file}
 done
