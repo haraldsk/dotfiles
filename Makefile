@@ -33,8 +33,10 @@ BREW_TAPS_PATH := $(BREW_PATH)/Homebrew/Library/Taps
 endif
 
 BREW_TAPS := \
+	azure/homebrew-kubelogin \
 	github/homebrew-gh \
 	goles/homebrew-battery \
+	hashicorp/homebrew-tap \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
 	puppetlabs/homebrew-puppet \
@@ -99,6 +101,7 @@ BREW_FORMULAS := \
 	krew \
 	kubebuilder \
 	kubectx \
+	kubelogin \
 	kubernetes-cli \
 	kustomize \
 	libpq \
@@ -146,6 +149,9 @@ BREW_FORMULAS := \
 	xz \
 	zlib \
 	zoxide
+
+# needed for latest vault version
+# hashicorp/tap/vault
 
 BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
