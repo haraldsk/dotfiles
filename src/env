@@ -59,9 +59,9 @@ if [[ -x "$HOME/.poetry/bin/poetry" ]]; then
     export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
-if [[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
+
+# load orbstack shell settings
+source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 # puppet tools require ruby@2.7
 if [[ -d "/opt/homebrew/opt/ruby@2.7/bin" ]]; then
@@ -77,3 +77,9 @@ fi
 for env_file in $(find $HOME -maxdepth 1 -name '.env.*'); do
     source ${env_file}
 done
+#
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+if [[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+    export SDKMAN_DIR="$HOME/.sdkman"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
