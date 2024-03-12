@@ -242,6 +242,13 @@ return require("packer").startup(function(use)
 
   use("akinsho/toggleterm.nvim")
 
+  -- allow esacping with quickly typing jk and jj
+  use({
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  })
   use({
     "kylechui/nvim-surround",
     config = function()
