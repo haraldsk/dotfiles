@@ -3,6 +3,7 @@ local servers = {
   "bashls",
   "clangd",
   "dockerls",
+  "docker_compose_language_service",
   "gopls",
   "gradle_ls",
   "helm_ls",
@@ -17,6 +18,7 @@ local servers = {
   -- "salt_ls",  -- breaks on  yaml package
   "spectral", -- openapi
   "terraformls",
+  "tsserver",
   "yamlls",
 }
 
