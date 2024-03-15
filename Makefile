@@ -77,7 +77,6 @@ BREW_FORMULAS := \
 	github-markdown-toc \
 	gnupg \
 	go \
-	goenv \
 	golangci-lint \
 	golines \
 	gofumpt \

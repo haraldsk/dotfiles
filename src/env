@@ -16,19 +16,17 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=nvim
 export VISUAL=nvim
 
-# homebrew
-if [[ $(uname -p) -eq "arm" ]]; then
-  export PATH=${HOME}/bin:/usr/local/bin:/opt/homebrew/bin:${PATH}
-else
-  export PATH=${HOME}/bin:/usr/local/bin:${PATH}
+# set paths for homebrew for man pages and scripts
+if [[ -n $(which brew) ]]; then
+    eval $(brew shellenv)
 fi
 
-# go - https://github.com/golang/protobuf/issues/795
-if [[ -x  `which go` ]]; then
-    export GOROOT=$(go env GOROOT)
-    export GOPATH=$(go env GOPATH)
-    export GOBIN=$GOPATH/bin
-    export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+# use git cloned version of goenv and tweak path to override system version
+if [[ -d "$HOME/.goenv" ]]; then
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    export PATH="$GOENV_ROOT/shims:$PATH"
+    eval "$(goenv init -)"
 fi
 
 # vscode
@@ -66,11 +64,6 @@ source ~/.orbstack/shell/init.bash 2>/dev/null || :
 # puppet tools require ruby@2.7
 if [[ -d "/opt/homebrew/opt/ruby@2.7/bin" ]]; then
     export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
-fi
-
-# set paths for homebrew for man pages and scripts
-if [[ -n $(which brew) ]]; then
-    eval $(brew shellenv)
 fi
 
 # load local env files which are not in git
