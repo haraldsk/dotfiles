@@ -16,6 +16,13 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=nvim
 export VISUAL=nvim
 
+# homebrew
+if [[ $(uname -p) -eq "arm" ]]; then
+  export PATH=${HOME}/bin:/usr/local/bin:/opt/homebrew/bin:${PATH}
+else
+  export PATH=${HOME}/bin:/usr/local/bin:${PATH}
+fi
+#
 # set paths for homebrew for man pages and scripts
 if [[ -n $(which brew) ]]; then
     eval $(brew shellenv)
