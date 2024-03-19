@@ -159,7 +159,6 @@ BREW_CASKS := \
 	1password \
 	1password-cli \
 	alt-tab \
-	alacritty \
 	copyq \
 	docker \
 	drawio \
