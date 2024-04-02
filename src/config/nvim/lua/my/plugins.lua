@@ -65,7 +65,7 @@ return require("packer").startup(function(use)
     config = function()
       require("dapui").setup()
     end,
-    requires = { "mfussenegger/nvim-dap" },
+    requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
   })
 
   -- colorschemes
@@ -249,6 +249,9 @@ return require("packer").startup(function(use)
       require("better_escape").setup()
     end,
   })
+
+  use("github/copilot.vim")
+
   use({
     "kylechui/nvim-surround",
     config = function()
