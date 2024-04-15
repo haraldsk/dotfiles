@@ -1,2 +1,5 @@
 #  promptline setup from vim airline setup in .vimrc.after
-test -f ~/.bash/promptline.sh && source ~/.bash/promptline.sh
+# test -f ~/.bash/promptline.sh && source ~/.bash/promptline.sh
+if [[ $(brew --prefix)/bin/starship ]]; then
+  eval "$(starship init bash)"
+fi
