@@ -221,7 +221,6 @@ BREW_CASKS := \
 	font-ubuntu-nerd-font \
 	font-victor-mono-nerd-font \
 	karabiner-elements \
-	keybase \
 	kubecontext \
 	intellij-idea-ce \
 	iterm2 \
