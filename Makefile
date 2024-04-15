@@ -100,6 +100,7 @@ BREW_FORMULAS := \
 	krew \
 	kubebuilder \
 	kubectx \
+	kubie \
 	kubelogin \
 	kubernetes-cli \
 	kustomize \
@@ -127,6 +128,7 @@ BREW_FORMULAS := \
 	spark \
 	speedtest \
 	sqlite \
+	starship \
 	teller \
 	terraform \
 	terraform-docs \
