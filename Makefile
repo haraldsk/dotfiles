@@ -99,7 +99,6 @@ BREW_FORMULAS := \
 	kotlin \
 	krew \
 	kubebuilder \
-	kubectx \
 	kubie \
 	kubelogin \
 	kubernetes-cli \
