@@ -42,8 +42,8 @@ if [[ -x "/Applications/Visual Studio Code.app" ]]; then
 fi
 
 # glcoud
-if [ -f '/Users/harald/.google-cloud-sdk/path.bash.inc' ]; then
-    . '/Users/harald/.google-cloud-sdk/path.bash.inc'
+if [ -f "$HOME/.google-cloud-sdk/path.bash.inc" ]; then
+    . "$HOME/.google-cloud-sdk/path.bash.inc"
 fi
 
 # krew
