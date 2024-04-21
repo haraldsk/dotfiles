@@ -133,6 +133,8 @@ BREW_FORMULAS := \
 	terraform-docs \
 	terramate \
 	tflint \
+	tldr \
+	thefuck \
 	the_silver_searcher \
 	tig \
 	tmux \
