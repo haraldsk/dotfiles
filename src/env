@@ -16,6 +16,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # vim
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER='nvim +Man!'
 
 # homebrew
 if [[ $(uname -p) -eq "arm" ]]; then
