@@ -61,6 +61,7 @@ BREW_FORMULAS := \
 	battery \
 	bash \
 	bash-completion \
+	btop \
 	cdk8s \
 	cmake \
 	cookiecutter \
