@@ -34,6 +34,7 @@ endif
 
 BREW_TAPS := \
 	azure/homebrew-kubelogin \
+	felixkratz/homebrew-formulae \
 	github/homebrew-gh \
 	goles/homebrew-battery \
 	hashicorp/homebrew-tap \
@@ -125,6 +126,7 @@ BREW_FORMULAS := \
 	shellcheck \
 	spacectl \
 	spark \
+	sketchybar \
 	speedtest \
 	sqlite \
 	starship \
@@ -213,6 +215,8 @@ BREW_CASKS := \
 	font-proggy-clean-tt-nerd-font \
 	font-roboto-mono-nerd-font \
 	font-sauce-code-pro-nerd-font \
+	font-sf-mono \
+	font-sf-pro \
 	font-shure-tech-mono-nerd-font \
 	font-space-mono-nerd-font \
 	font-symbols-only-nerd-font \
@@ -230,6 +234,7 @@ BREW_CASKS := \
 	microsoft-teams \
 	orbstack \
 	puppet-agent \
+	sf-symbols \
 	slack \
 	spotify \
 	yt-music \
