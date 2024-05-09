@@ -1,0 +1,17 @@
+# vim: set ft=zsh :
+source $HOME/.alias
+source $HOME/.env
+source $HOME/.zsh/completion
+source $HOME/.zsh/prompt
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(fzf --zsh)"
+
+# Add NRKSSH to PATH
+[ -s $HOME/bin/nrkssh ] && eval "$($HOME/bin/nrkssh shellenv)"

@@ -152,7 +152,10 @@ BREW_FORMULAS := \
 	yq \
 	xz \
 	zlib \
-	zoxide
+	zoxide \
+	zsh \
+	zsh-autocomplete \
+	zsh-completions
 
 # needed for latest vault version
 # hashicorp/tap/vault
@@ -304,6 +307,7 @@ install: \
 	scripts \
 	$(HOME)/bin \
 	bash_profile \
+	zshrc \
 	google-cloud-sdk \
 	node \
 	nvm \
@@ -364,6 +368,11 @@ bash_profile: $(HOME)/.bash_profile
 $(HOME)/.bash_profile: |$(HOME)/.bash_profile_mac
 	ln -Fsv $(HOME)/.bash_profile_mac $@
 
+zshrc: $(HOME)/.zshrc
+$(HOME)/.zshrc: |$(HOME)/.zshrc_mac
+	ln -Fsv $(HOME)/.zshrc_mac $@
+
+
 dot-config-files: |$(PREDEF_DOT_CONFIG_FILES)
 $(PREDEF_DOT_CONFIG_FILES):
 	ln -Fsv $(PWD)/src/config/$(patsubst .%,%,$(notdir $@)) $@
@@ -383,7 +392,7 @@ $(HOME)/.google-cloud-sdk: $(PYENV_VERSIONS)/gcp-sdk
 	rm google-cloud-install.sh
 
 google-cloud-sdk-gke-gcloud-auth-plugin: |$(HOME)/.google-cloud-sdk/bin/gke-gcloud-auth-plugin
-(HOME)/.google-cloud-sdk/bin/gke-gcloud-auth-plugin: |$(HOME)/.google-cloud-sdk $(HOME)/.bash_profile
+(HOME)/.google-cloud-sdk/bin/gke-gcloud-auth-plugin: |$(HOME)/.google-cloud-sdk $(HOME)/.bash_profile $(HOME)/.zshrc
 	CLOUDSDK_CORE_DISABLE_PROMPTS=1 gcloud components install gke-gcloud-auth-plugin
 
 sdkman: |$(HOME)/.sdkman
@@ -446,11 +455,11 @@ $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install neovim
 
 goenv: $(HOME)/.goenv
-$(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile
+$(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 	git clone https://github.com/syndbg/goenv.git $@
 
 tfenv: $(HOME)/.tfenv
-$(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile
+$(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 	git clone https://github.com/tfutils/tfenv.git $@
 
 $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)

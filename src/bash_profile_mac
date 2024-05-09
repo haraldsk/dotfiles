@@ -20,7 +20,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(zoxide init --cmd cd bash)"
-
+eval "$(fzf --bash)"
 
 # Add NRKSSH to PATH
 [ -s $HOME/bin/nrkssh ] && eval "$($HOME/bin/nrkssh shellenv)"

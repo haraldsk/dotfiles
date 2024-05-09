@@ -1,0 +1,24 @@
+# vim set ft=zsh:
+if [ -f "$(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]; then
+  source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+if [ -f "$HOME/.google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/.google-cloud-sdk/completion.zsh.inc"; fi
+
+if $(which kubectl)>/dev/null; then
+  source <(kubectl completion zsh)
+  # completion works with kubectl aliased as k
+  compdef k='kubectl'
+fi
+
+# 1password shell
+if [[ -x `which op` ]]; then
+    source <(op completion zsh)
+fi
