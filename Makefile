@@ -155,6 +155,7 @@ BREW_FORMULAS := \
 	zlib \
 	zoxide \
 	zsh \
+	zsh-autosuggestions \
 	zsh-autocomplete \
 	zsh-completions
 
