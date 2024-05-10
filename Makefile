@@ -106,6 +106,7 @@ BREW_FORMULAS := \
 	kubernetes-cli \
 	kustomize \
 	libpq \
+	nowplaying-cli \
 	make \
 	minikube \
 	mysql-client \
@@ -131,6 +132,7 @@ BREW_FORMULAS := \
 	speedtest \
 	sqlite \
 	starship \
+	switchaudio-osx \
 	teller \
 	terraform \
 	terraform-docs \
@@ -467,7 +469,9 @@ $(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 
 sketchybar: $(HOME)/.local/share/sketchybar_lua
 $(HOME)/.local/share/sketchybar_lua: |$(BREW_FORMULAS_PATHS)
+	curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.5/sketchybar-app-font.ttf -o $(HOME)/Library/Fonts/sketchybar-app-font.ttf
 	(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+	brew services start sketchybar
 
 $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)
 	$(PYENV) virtualenv $(PYTHON_3) $(notdir $@)
