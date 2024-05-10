@@ -319,6 +319,7 @@ install: \
 	$(PYENV) \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
+	$(HOME)/.local/share/sketchybar_lua \
 	$(POETRY_HOME) \
 	$(HOME)/.docker/cli-plugins/docker-lock \
 	$(GEMS)
@@ -463,6 +464,10 @@ $(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 tfenv: $(HOME)/.tfenv
 $(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 	git clone https://github.com/tfutils/tfenv.git $@
+
+sketchybar: $(HOME)/.local/share/sketchybar_lua
+$(HOME)/.local/share/sketchybar_lua: |$(BREW_FORMULAS_PATHS)
+	(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
 
 $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)
 	$(PYENV) virtualenv $(PYTHON_3) $(notdir $@)
