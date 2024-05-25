@@ -23,6 +23,9 @@ zcomet snippet https://github.com/jreese/zsh-titles/blob/master/titles.plugin.zs
 zcomet trigger zhooks agkozak/zhooks
 zcomet trigger zsh-prompt-benchmark romkatv/zsh-prompt-benchmark
 
+# fzf tab completion
+zcomet load Aloxaf/fzf-tab
+
 # Lazy-load Prezto's archive module without downloading all of Prezto's
 # submodules
 zcomet trigger --no-submodules archive unarchive lsarchive \
@@ -31,12 +34,48 @@ zcomet trigger --no-submodules archive unarchive lsarchive \
 # It is good to load these popular plugins last, and in this order:
 zcomet load zsh-users/zsh-syntax-highlighting
 zcomet load zsh-users/zsh-autosuggestions
+zcomet load zsh-users/zsh-completions
 
 # Run compinit and compile its cache
 zcomet compinit
 
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
+# set keybindings to emacs mode (as bash)
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# history
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# case insensitive completion search with ctrl-p
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+# tmux popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
+alias ls-'ls --color'
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
