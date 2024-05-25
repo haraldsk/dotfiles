@@ -319,6 +319,7 @@ install: \
 	script-config \
 	$(KREW_PLUGINS_PATHS) \
 	$(PYENV) \
+	$(HOME)/.zcomet/bin \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
 	$(HOME)/.local/share/sketchybar_lua \
@@ -373,7 +374,7 @@ bash_profile: $(HOME)/.bash_profile
 $(HOME)/.bash_profile: |$(HOME)/.bash_profile_mac
 	ln -Fsv $(HOME)/.bash_profile_mac $@
 
-zshrc: $(HOME)/.zshrc
+zshrc: $(HOME)/.zshrc $(HOME)/.zcomet/bin
 $(HOME)/.zshrc: |$(HOME)/.zshrc_mac
 	ln -Fsv $(HOME)/.zshrc_mac $@
 
@@ -458,6 +459,10 @@ $(PYENV_VERSIONS)/neovim3: $(PYTHON_3_DIR) |$(PYENV)
 $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install --upgrade pip
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install neovim
+
+zcomet: $(HOME)/.zcomet/bin
+$(HOME)/.zcomet/bin:
+	git clone https://github.com/agkozak/zcomet.git $@
 
 goenv: $(HOME)/.goenv
 $(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
