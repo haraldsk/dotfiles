@@ -80,5 +80,6 @@ alias ls-'ls --color'
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 
+eval "$(direnv hook zsh)"
 # Add NRKSSH to PATH
 [ -s $HOME/bin/nrkssh ] && eval "$($HOME/bin/nrkssh shellenv)"

@@ -67,6 +67,7 @@ BREW_FORMULAS := \
 	cookiecutter \
 	coreutils \
 	cosign \
+	direnv \
 	delve \
 	diffutils \
 	docker-compose \
