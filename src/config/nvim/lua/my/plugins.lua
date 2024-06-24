@@ -192,8 +192,6 @@ return require("packer").startup(function(use)
     requires = { "williamboman/mason-lspconfig.nvim" },
   })
 
-  use("lvimuser/lsp-inlayhints.nvim")
-
   use({
     "williamboman/mason-lspconfig.nvim",
     requires = { "williamboman/mason.nvim" },
