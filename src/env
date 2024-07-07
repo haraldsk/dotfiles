@@ -58,6 +58,11 @@ if [[ -d "$HOME/.krew/bin" ]]; then
     export PATH="${PATH}:${HOME}/.krew/bin"
 fi
 
+# cargo
+if [[ -d "$HOME/.cargo/bin" ]]; then
+    export PATH="${PATH}:${HOME}/.cargo/bin"
+fi
+
 # pyenv and pyenv-virtualenv
 if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
