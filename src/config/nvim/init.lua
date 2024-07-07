@@ -1,3 +1,4 @@
+--- TODO: Reconficure to use lazy loading properly: https://www.youtube.com/watch?v=idIVVAvMSbM
 --- plugins need to go first
 require("my.plugins")
 -- require("my.toggleterm")
