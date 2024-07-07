@@ -1,9 +1,9 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-  return
-end
+-- local status_ok, nvim_tree = pcall(require, "nvim-tree")
+-- if not status_ok then
+--   return
+-- end
 
-nvim_tree.setup({
+require("nvim-tree").setup({
   on_attach = require("my.mappings.nvim-tree").on_attach,
   update_focused_file = {
     enable = true,

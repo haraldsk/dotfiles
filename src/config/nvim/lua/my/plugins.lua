@@ -1,95 +1,71 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({
-      "git",
-      "clone",
-      "--depth",
-      "1",
-      "https://github.com/wbthomason/packer.nvim",
-      install_path,
-    })
-    vim.cmd([[packadd packer.nvim]])
-    return true
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
-  return false
 end
---
-local packer_bootstrap = ensure_packer()
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- needs to be done before loading plugins
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
-
-return require("packer").startup(function(use)
-  use("wbthomason/packer.nvim")
-  use("christoomey/vim-tmux-navigator") -- jumping between vim and tmux
-  use("tpope/vim-dispatch") -- async dispatch into tmux panes, etc.
-  -- use 'gpanders/editorconfig.nvim' -- will be integrated into nvim in 0.9
-  use("itspriddle/vim-marked") -- Marked plugin
-  use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-  use("famiu/bufdelete.nvim") -- Implements BDelete and BWipe for proper buffer deletion
+local plugin = {
+  "christoomey/vim-tmux-navigator", -- jumping between vim and tmux
+  "tpope/vim-dispatch", -- async dispatch into tmux panes, etc.
+  "itspriddle/vim-marked", -- Marked plugin
+  "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+  "famiu/bufdelete.nvim", -- Implements BDelete and BWipe for proper buffer deletion
 
   -- syntax plugins
-  use("mfussenegger/nvim-ansible") -- enables use of filetype yaml.ansible
-  use("fatih/vim-go")
-  use("towolf/vim-helm")
-  use("tmux-plugins/vim-tmux") -- plugin for tmux.conf
+  "mfussenegger/nvim-ansible", -- enables  of filetype yaml.ansible
+  "fatih/vim-go",
+  "towolf/vim-helm",
+  "tmux-plugins/vim-tmux", -- plugin for tmux.conf
 
   -- dap
-  use("mfussenegger/nvim-dap")
-  use("leoluz/nvim-dap-go") -- delve integration
-  use({
+  "mfussenegger/nvim-dap",
+  "leoluz/nvim-dap-go", -- delve integration
+  {
     "rcarriga/nvim-dap-ui",
     config = function()
       require("dapui").setup()
     end,
-    requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-  })
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+  },
 
   -- colorschemes
-  use("lunarvim/darkplus.nvim")
-  use("lunarvim/Onedarker.nvim")
-  use("folke/tokyonight.nvim")
+  "lunarvim/darkplus.nvim",
+  "lunarvim/Onedarker.nvim",
+  "folke/tokyonight.nvim",
 
   -- Completions
-  use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
-  use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-  use({ "hrsh7th/cmp-path" }) -- path completions
-  -- use({"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}) -- github plugin requires gh auth and GITHUB_API_TOKEN
+  { "hrsh7th/nvim-cmp" }, -- The completion plugin
+  { "hrsh7th/cmp-buffer" }, -- buffer completions
+  { "hrsh7th/cmp-path" }, -- path completions
+  -- {"petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim"}, -- github plugin dependencies gh auth and GITHUB_API_TOKEN
   -- hrsh7th/cmp-copilot -- github copilot interation
-  use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
-  use({ "hrsh7th/cmp-nvim-lsp" })
-  use({ "hrsh7th/cmp-nvim-lua" })
-  use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+  { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-nvim-lua" },
+  { "hrsh7th/cmp-nvim-lsp-signature-help" },
 
   -- Snippets
-  use({ "L3MON4D3/LuaSnip" }) --snippet engine
-  use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
+  { "L3MON4D3/LuaSnip" }, --snippet engine
+  { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to
 
-  use({
+  {
     "AckslD/nvim-neoclip.lua",
-    requires = {
+    dependencies = {
       -- you'll need at least one of these
       { "nvim-telescope/telescope.nvim" },
       -- {'ibhagwan/fzf-lua'},
@@ -97,159 +73,170 @@ return require("packer").startup(function(use)
     config = function()
       require("neoclip").setup()
     end,
-  })
+  },
 
   -- folding
-  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+  { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 
   -- indent-blankline
-  use({
+  {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("ibl").setup({
         indent = { char = "" },
       })
     end,
-  })
+  },
 
   --- Todo
-  use({
+  {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-  })
+    dependencies = "nvim-lua/plenary.nvim",
+  },
 
   -- key mappings
-  use({
+  {
     "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
       require("which-key").setup({
         -- your configuration comes here
-        -- or leave it empty to use the default settings
+        -- or leave it empty to  the default settings
         -- refer to the configuration section below
       })
     end,
-  })
-  use("tummetott/unimpaired.nvim")
+  },
+  "tummetott/unimpaired.nvim",
 
-  -- use("RRethy/vim-illuminate") -- highlighting other uses of the word under the cursor
-  use({
+  -- ("RRethy/vim-illuminate") -- highlighting other s of the word under the cursor
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "kyazdani42/nvim-web-devicons" },
       { "nvim-telescope/telescope-ui-select.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
       { "jonarrien/telescope-cmdline.nvim" },
     },
-  })
+  },
 
-  use({ "stevearc/aerial.nvim" })
+  { "stevearc/aerial.nvim" },
 
   -- notification widget
-  use({ "j-hui/fidget.nvim" })
+  { "j-hui/fidget.nvim" },
 
   -- custom bufferline plugin
-  use({
+  {
     "akinsho/bufferline.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
-  })
+    dependencies = "nvim-tree/nvim-web-devicons",
+  },
 
   -- custom statusline plugin
-  use({
+  {
     "nvim-lualine/lualine.nvim",
-    requires = { "nvim-tree/nvim-web-devicons", opt = true },
-  })
+    dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
+  },
   -- treesitter
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    requires = {
+    build = ":TSUpdate",
+    dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
-  })
+  },
 
-  use({
+  {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    after = "nvim-treesitter",
-    requires = "nvim-treesitter/nvim-treesitter",
-  })
+    -- after = "nvim-treesitter",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
 
-  use({
+  {
     "nvim-treesitter/nvim-treesitter-context",
-    after = "nvim-treesitter",
-    requires = "nvim-treesitter/nvim-treesitter",
-  })
+    -- after = "nvim-treesitter",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
   -- git integrations
-  use("tpope/vim-fugitive")
-  use("lewis6991/gitsigns.nvim")
+  "tpope/vim-fugitive",
+  "lewis6991/gitsigns.nvim",
 
   -- lsp -- load order important {
-  use({
+  {
     "neovim/nvim-lspconfig",
-    requires = { "williamboman/mason-lspconfig.nvim" },
-  })
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
+  },
 
-  use({
+  {
     "williamboman/mason-lspconfig.nvim",
-    requires = { "williamboman/mason.nvim" },
-  })
+    dependencies = { "williamboman/mason.nvim" },
+  },
 
-  use({ "williamboman/mason.nvim", config = require("mason").setup() })
+  -- { "williamboman/mason.nvim" },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
 
-  -- auto install formatters and linters with Mason, using the configuration
-  -- in none-ls as the source of trouth, similar to mason-lspconfig for LSP
-  use({
+  --  -- auto install formatters and linters with Mason, using the configuration
+  --  -- in none-ls as the source of trouth, similar to mason-lspconfig for LSP
+  {
     "jay-babu/mason-null-ls.nvim",
-    requires = {
+    dependencies = {
       "williamboman/mason.nvim",
       "nvimtools/none-ls.nvim",
     },
-    config = require("mason-null-ls").setup({
-      ensure_installed = nil,
-      automatic_installation = true,
-    }),
-  })
+    config = function()
+      require("mason-null-ls").setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+      })
+    end,
+  },
 
-  use("nvimtools/none-ls.nvim") -- formatting and linting
-  -- }
+  "nvimtools/none-ls.nvim", -- formatting and linting
 
-  use({
+  {
     "plasticboy/vim-markdown",
-    requires = {
+    dependencies = {
       { "godlygeek/tabular" },
     },
-  })
+  },
 
-  use({
+  {
     "nvim-tree/nvim-tree.lua",
-    requires = {
+    lazy = false,
+    dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
     },
-  })
+    -- config = function()
+    --   require("my.nvim-tree")
+    -- end,
+  },
 
-  use({
+  {
     "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
-  })
+    dependencies = "nvim-tree/nvim-web-devicons",
+  },
 
-  use("mbbill/undotree")
+  "mbbill/undotree",
 
-  use("akinsho/toggleterm.nvim")
+  "akinsho/toggleterm.nvim",
 
   -- allow esacping with quickly typing jk and jj
-  use({
+  {
     "max397574/better-escape.nvim",
     config = function()
       require("better_escape").setup()
     end,
-  })
+  },
 
-  use("github/copilot.vim")
+  "github/copilot.vim",
 
-  use({
+  {
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup({
@@ -264,9 +251,7 @@ return require("packer").startup(function(use)
         --    delete(functi*on calls)     dsf             function calls
       })
     end,
-  })
+  },
+}
 
-  if packer_bootstrap then
-    require("packer").sync()
-  end
-end)
+require("lazy").setup(plugin, {})
