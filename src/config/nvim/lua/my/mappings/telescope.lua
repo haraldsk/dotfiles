@@ -38,7 +38,6 @@ vim.keymap.set("n", "<leader>fli", builtin.lsp_implementations, { desc = "LSP im
 vim.keymap.set("n", "<leader>fld", builtin.lsp_definitions, { desc = "LSP defintions" })
 vim.keymap.set("n", "<leader>flt", builtin.lsp_type_definitions, { desc = "LSP type defintions" })
 
-vim.keymap.set("n", "<leader>fn", "<cmd>Telescope neoclip<CR>", { desc = "Neoclip clipboard" })
 vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Todo list " })
 
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":silent Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" })

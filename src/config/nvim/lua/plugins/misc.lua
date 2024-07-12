@@ -23,4 +23,17 @@ return {
       },
     },
   },
+  {
+    "AckslD/nvim-neoclip.lua",
+    config = true,
+    lazy = false,
+    keys = {
+      { "<leader>fn", "<cmd>Telescope neoclip<cr>", desc = "Neoclip clipboard" },
+    },
+    dependencies = {
+      -- you'll need at least one of these
+      { "nvim-telescope/telescope.nvim" },
+      -- {'ibhagwan/fzf-lua'},
+    },
+  },
 }

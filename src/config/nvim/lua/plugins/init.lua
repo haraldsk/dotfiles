@@ -34,17 +34,6 @@ return {
   { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to
 
   {
-    "AckslD/nvim-neoclip.lua",
-    dependencies = {
-      -- you'll need at least one of these
-      { "nvim-telescope/telescope.nvim" },
-      -- {'ibhagwan/fzf-lua'},
-    },
-    config = function()
-      require("neoclip").setup()
-    end,
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
