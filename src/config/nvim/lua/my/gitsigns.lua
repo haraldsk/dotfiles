@@ -41,9 +41,6 @@ gitsigns.setup({
     row = 0,
     col = 1,
   },
-  yadm = {
-    enable = false,
-  },
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -73,11 +70,6 @@ gitsigns.setup({
     map("n", "<leader>td", gs.toggle_deleted, "Delete show toggle")
 
     -- Text object
-    map(
-      { "o", "x" },
-      "ih",
-      ":<C-U>Gitsigns select_hunk<CR>",
-      "Select hunk as text object"
-    )
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select hunk as text object")
   end,
 })
