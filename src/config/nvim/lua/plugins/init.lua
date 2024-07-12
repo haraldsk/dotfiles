@@ -18,11 +18,6 @@ return {
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
   },
 
-  -- colorschemes
-  "lunarvim/darkplus.nvim",
-  "lunarvim/Onedarker.nvim",
-  "folke/tokyonight.nvim",
-
   -- Completions
   { "hrsh7th/nvim-cmp" }, -- The completion plugin
   { "hrsh7th/cmp-buffer" }, -- buffer completions
