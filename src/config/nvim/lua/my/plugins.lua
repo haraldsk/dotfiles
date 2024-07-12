@@ -220,13 +220,17 @@ local plugin = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    lazy = false,
+    keys = {
+      { "<leader>n", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+      { "<C-t>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+    },
+
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
     },
-    -- config = function()
-    --   require("my.nvim-tree")
-    -- end,
+    config = function()
+      require("my.nvim-tree")
+    end,
   },
 
   {

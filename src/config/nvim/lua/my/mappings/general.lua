@@ -18,8 +18,8 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- NvimTree
-keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
 
 -- Copy & Paste
 keymap("n", "<C-c>", '"*y', opts) -- yank to * register
