@@ -5,10 +5,6 @@ return {
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
   "famiu/bufdelete.nvim", -- Implements BDelete and BWipe for proper buffer deletion
 
-  -- syntax plugins
-  "mfussenegger/nvim-ansible", -- enables  of filetype yaml.ansible
-  "fatih/vim-go",
-  "towolf/vim-helm",
   "tmux-plugins/vim-tmux", -- plugin for tmux.conf
 
   -- dap
