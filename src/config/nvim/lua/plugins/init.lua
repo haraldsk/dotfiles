@@ -193,13 +193,6 @@ return {
     },
   },
 
-  {
-    "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
-
-  "mbbill/undotree",
-
   "akinsho/toggleterm.nvim",
 
   -- allow esacping with quickly typing jk and jj
