@@ -104,8 +104,6 @@ return {
     },
   },
 
-  { "stevearc/aerial.nvim" },
-
   -- notification widget
   { "j-hui/fidget.nvim" },
 
