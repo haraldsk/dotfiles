@@ -77,6 +77,7 @@ return {
         -- refer to the configuration section below
       })
     end,
+    dependencies = "echasnovski/mini.icons",
   },
   "tummetott/unimpaired.nvim",
 
