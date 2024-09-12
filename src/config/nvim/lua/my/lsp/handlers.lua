@@ -11,8 +11,8 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 -- ufo
 M.capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
 }
 
 M.setup = function()
@@ -24,10 +24,7 @@ M.setup = function()
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(
-      sign.name,
-      { texthl = sign.name, text = sign.text, numhl = "" }
-    )
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local config = {
@@ -50,15 +47,13 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
-    })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
 
-  vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
-    })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 end
 
 local function lsp_keymaps(bufnr)
@@ -70,55 +65,19 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  keymap(
-    bufnr,
-    "n",
-    "<leader>lf",
-    "<cmd>lua vim.lsp.buf.format{ async = true }<cr>",
-    opts
-  )
+  keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
   keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
   keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
-  keymap(
-    bufnr,
-    "n",
-    "<leader>la",
-    "<cmd>lua vim.lsp.buf.code_action()<cr>",
-    opts
-  )
-  keymap(
-    bufnr,
-    "n",
-    "<leader>lj",
-    "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>",
-    opts
-  )
-  keymap(
-    bufnr,
-    "n",
-    "<leader>lk",
-    "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
-    opts
-  )
+  keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+  keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+  keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
   keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-  keymap(
-    bufnr,
-    "n",
-    "<leader>ls",
-    "<cmd>lua vim.lsp.buf.signature_help()<CR>",
-    opts
-  )
-  keymap(
-    bufnr,
-    "n",
-    "<leader>lq",
-    "<cmd>lua vim.diagnostic.setloclist()<CR>",
-    opts
-  )
+  keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
+  if client.name == "ts_ls" then
     client.server_capabilities.documentFormattingProvider = false
   end
 
@@ -146,7 +105,6 @@ M.on_attach = function(client, bufnr)
     return
   end
   lsp_inlayhints.on_attach(client, bufnr)
-
 end
 
 return M

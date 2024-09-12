@@ -18,7 +18,7 @@ local servers = {
   -- "salt_ls",  -- breaks on  yaml package
   "spectral", -- openapi
   "terraformls",
-  "tsserver",
+  "ts_ls",
   "yamlls",
 }
 
