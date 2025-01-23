@@ -49,8 +49,8 @@ gitsigns.setup({
     end
 
     -- Navigation
-    map("n", "]g", gs.next_hunk, "Next hunk")
-    map("n", "[g", gs.prev_hunk, "Prev hunk")
+    map("n", "]h", gs.next_hunk, "Next hunk")
+    map("n", "[h", gs.prev_hunk, "Prev hunk")
 
     -- Actions
     map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
