@@ -32,7 +32,12 @@ return {
   -- Snippets
   { "L3MON4D3/LuaSnip" }, --snippet engine
   { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to
-
+  {
+    "ckipp01/nvim-jenkinsfile-linter",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+    },
+  },
   {
     "NeogitOrg/neogit",
     dependencies = {
