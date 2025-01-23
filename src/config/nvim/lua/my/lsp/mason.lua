@@ -6,6 +6,7 @@ local servers = {
   "docker_compose_language_service",
   "gopls",
   "gradle_ls",
+  "groovyls",
   "helm_ls",
   "jdtls",
   "jsonls",
