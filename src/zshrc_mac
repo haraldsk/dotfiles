@@ -9,6 +9,10 @@ source $HOME/.zsh/prompt
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+[ -s $HOME/.bash/openssh-agent.sh ] && source $HOME/.bash/openssh-agent.sh
+
 # Load a prompt
 #zcomet load agkozak/agkozak-zsh-prompt
 
