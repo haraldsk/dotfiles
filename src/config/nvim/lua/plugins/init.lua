@@ -12,9 +12,6 @@ return {
   "leoluz/nvim-dap-go", -- delve integration
   {
     "rcarriga/nvim-dap-ui",
-    config = function()
-      require("dapui").setup()
-    end,
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
   },
 
