@@ -35,6 +35,7 @@ null_ls.setup({
     -- diagnostics.cfn_lint,
     diagnostics.actionlint,
     diagnostics.golangci_lint,
+    diagnostics.npm_groovy_lint,
     diagnostics.terraform_validate,
     diagnostics.tfsec,
     diagnostics.yamllint,
