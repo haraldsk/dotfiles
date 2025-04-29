@@ -94,7 +94,6 @@ BREW_FORMULAS := \
 	ipcalc \
 	istioctl \
 	infracost \
-	yabai \
 	jq \
 	k3d \
 	k9s \
@@ -153,9 +152,11 @@ BREW_FORMULAS := \
 	velero \
 	watch \
 	wget \
-	yamllint \
-	yq \
 	xz \
+	yamllint \
+	yabai \
+	yarn \
+	yq \
 	zlib \
 	zoxide \
 	zsh \
