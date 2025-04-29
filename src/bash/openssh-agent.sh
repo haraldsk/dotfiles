@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-set -o nounset
-set -o errexit
-set -o pipefail
+#!/usr/bin/env zsh
 
 ## requiments: brew install openssh
 ## Starts openssh ssh-agent at a given path, good for custom ssh setups
@@ -21,3 +18,6 @@ if [[ -x ${SSH_AGENT} ]] && [[ -z $(pgrep -f $SSH_AGENT) ]]; then
   ln -sf "${SSH_AGENT_TMP_PATH}" "${SSH_AGENT_PATH}"
   echo "Started ${SSH_AGENT} and linked ${SSH_AGENT_TMP_PATH} to ${SSH_AGENT_PATH}"
 fi
+
+export SSH_AUTH_SOCK="${SSH_AGENT_PATH}"
+
