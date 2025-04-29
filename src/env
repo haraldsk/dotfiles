@@ -76,6 +76,9 @@ if [[ -x "$HOME/.poetry/bin/poetry" ]]; then
     export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
+if [[ -d "/opt/homebrew/opt/openjdk@23/bin" ]]; then
+    export PATH="/opt/homebrew/opt/openjdk@23/bin:$PATH"
+fi
 
 # load orbstack shell settings
 source ~/.orbstack/shell/init.bash 2>/dev/null || :
@@ -95,3 +98,4 @@ if [[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
     export SDKMAN_DIR="$HOME/.sdkman"
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
+
