@@ -117,6 +117,7 @@ BREW_FORMULAS := \
 	openssl@3 \
 	pkg-config \
 	pnpm \
+	pre-commit \
 	protobuf \
 	pstree \
 	pwgen \
