@@ -88,6 +88,12 @@ if [[ -d "/opt/homebrew/opt/ruby@2.7/bin" ]]; then
     export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
 fi
 
+# pnpm
+if [[ -x "$(command -v pnpm)" ]]; then
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
+fi
+
 # load local env files which are not in git
 for env_file in $(find $HOME -maxdepth 1 -name '.env.*'); do
     source ${env_file}
