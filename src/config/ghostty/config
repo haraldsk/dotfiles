@@ -1,0 +1,11 @@
+# ~/.config/ghostty/config
+
+font-family = "Geist Mono"
+window-decoration = false
+background-opacity = 0.9
+background=#1a1c1c
+# command=/home/anar/Music/anar/scripts/ghostty-tmux.sh
+# command=zsh
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
+keybind=ctrl+shift+w=close_window
+confirm-close-surface=false
