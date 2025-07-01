@@ -19,8 +19,14 @@ return {
   { "hrsh7th/nvim-cmp" }, -- The completion plugin
   { "hrsh7th/cmp-buffer" }, -- buffer completions
   { "hrsh7th/cmp-path" }, -- path completions
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+
   -- {"petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim"}, -- github plugin dependencies gh auth and GITHUB_API_TOKEN
-  -- hrsh7th/cmp-copilot -- github copilot interation
   { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-nvim-lua" },
@@ -145,6 +151,9 @@ return {
     dependencies = { "williamboman/mason.nvim" },
   },
 
+  -- lspkind for icons in completion menu
+  "onsails/lspkind.nvim",
+
   -- { "williamboman/mason.nvim" },
   {
     "williamboman/mason.nvim",
@@ -187,8 +196,6 @@ return {
       require("better_escape").setup()
     end,
   },
-
-  "github/copilot.vim",
 
   {
     "kylechui/nvim-surround",
