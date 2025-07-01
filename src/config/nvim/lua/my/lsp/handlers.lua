@@ -24,7 +24,11 @@ M.setup = function()
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    vim.diagnostic.config({
+      signs = {
+        { name = sign.name, texthl = sign.name, text = sign.text, numhl = "" },
+      },
+    })
   end
 
   local config = {
