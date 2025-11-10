@@ -38,7 +38,6 @@ BREW_TAPS := \
 	github/homebrew-gh \
 	goles/homebrew-battery \
 	hashicorp/homebrew-tap \
-	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
 	incu6us/homebrew-tap \
 	koekeishiya/homebrew-formulae \
@@ -74,6 +73,7 @@ BREW_FORMULAS := \
 	fzf \
 	gh \
 	git \
+	git-credential-oauth \
 	github-markdown-toc \
 	gnupg \
 	go \
@@ -89,13 +89,11 @@ BREW_FORMULAS := \
 	highlight \
 	httpie \
 	ipcalc \
-	istioctl \
 	infracost \
 	jq \
 	k3d \
 	k9s \
 	kind \
-	kotlin \
 	krew \
 	kubebuilder \
 	kubie \
@@ -123,9 +121,7 @@ BREW_FORMULAS := \
 	rust \
 	skhd \
 	shellcheck \
-	spacectl \
 	spark \
-	sketchybar \
 	speedtest \
 	sqlite \
 	starship \
@@ -149,7 +145,6 @@ BREW_FORMULAS := \
 	wget \
 	xz \
 	yamllint \
-	yabai \
 	yarn \
 	yq \
 	zlib \
@@ -166,7 +161,6 @@ BREW_FORMULAS_PATHS := $(addprefix $(BREW_CELLAR),$(BREW_FORMULAS))
 UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 
 BREW_CASKS := \
-	1password \
 	1password-cli \
 	copyq \
 	docker \
@@ -265,18 +259,15 @@ GEMS := # \
 PYENV_DIR := $(HOME)/.pyenv
 PYENV := $(PYENV_DIR)/bin/pyenv
 PYENV_VERSIONS := $(PYENV_DIR)/versions
-PYTHON_2_MINOR := 2.7
-PYTHON_3_MINOR := 3.10
 
-PYTHON_2 := $(PYTHON_2_MINOR).18
-PYTHON_3 := $(PYTHON_3_MINOR).10
+PYTHON_3_MINOR := 3.14
 
-PYTHON_2_DIR := $(PYENV_VERSIONS)/$(PYTHON_2)
+PYTHON_3 := $(PYTHON_3_MINOR).0
+
 PYTHON_3_DIR := $(PYENV_VERSIONS)/$(PYTHON_3)
 
-PYTHON_DIRS := $(PYTHON_2_DIR) $(PYTHON_3_DIR)
+PYTHON_DIRS := $(PYTHON_3_DIR)
 
-PYTHON_2_NEOVIM_LIB := $(PYENV_VERSIONS)/neovim2/lib/python$(PYTHON_2_MINOR)/site-packages/neovim
 PYTHON_3_NEOVIM_LIB := $(PYENV_VERSIONS)/neovim3/lib/python$(PYTHON_3_MINOR)/site-packages/neovim
 
 POETRY_HOME := $(HOME)/.poetry
@@ -287,7 +278,6 @@ install: \
 	$(BREW_FORMULAS_PATHS) \
 	$(UNIVERSAL_CTAGS) \
 	$(BREW_CASKS_PATHS) \
-	base16-shell \
 	$(BREW_CELLAR)/neovim \
 	$(PREDEF_DOT_FILES) \
 	$(PREDEF_DOT_CONFIG_FILES) \
@@ -306,9 +296,7 @@ install: \
 	$(HOME)/.zcomet/bin \
 	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
-	$(HOME)/.local/share/sketchybar_lua \
 	$(POETRY_HOME) \
-	$(HOME)/.docker/cli-plugins/docker-lock \
 	$(GEMS)
 
 script-config: $(SCRIPT_CONFIGS_STAMPS)
@@ -389,26 +377,6 @@ sdkman: |$(HOME)/.sdkman
 $(HOME)/.sdkman:
 	curl -s "https://get.sdkman.io" | bash
 
-base16-shell: |$(HOME)/.config/base16-shell
-$(HOME)/.config/base16-shell: |$(DOT_CONFIG)
-	mkdir -p $@
-	(set -e; \
-	cd $@; \
-	git init; \
-	git remote add origin https://github.com/chriskempson/base16-shell.git; \
-	git fetch origin; \
-	git checkout -b master --track origin/master; \
-	git reset origin/master)
-
-# input-font: $(HOME)/Library/Fonts/Input_Fonts
-# $(HOME)/Library/Fonts/Input_Fonts:
-# 	mkdir -p $(dir $@)
-# 	mkdir -p tmp
-# 	curl "https://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=" > tmp/Input-Font.zip
-# 	unzip tmp/Input-Font.zip -d tmp
-# 	mv tmp/Input_Fonts $(dir $@)
-# 	rm -rf tmp
-
 nvm: |$(HOME)/.nvm
 $(HOME)/.nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
@@ -418,7 +386,7 @@ node: |$(HOME)/.nvm/alias/default
 $(HOME)/.nvm/alias/default: |$(HOME)/.nvm
 	source $(HOME)/.nvm/nvm.sh && nvm alias default system
 
-$(BREW_CELLAR)/neovim: $(PYTHON_3_NEOVIM_LIB) | $(HOME)/.vimrc_background $(BREW)
+$(BREW_CELLAR)/neovim: $(PYTHON_3_NEOVIM_LIB) | $(BREW)
 	$(BREW) install neovim
 
 pyenv: $(PYENV)
@@ -430,15 +398,9 @@ $(PYTHON_DIRS): |$(PYENV)
 	# https://github.com/python-poetry/poetry/issues/7695#issuecomment-1480617455
 	CONFIGURE_OPTS="-with-openssl=$(BREW_PATH)/opt/openssl" $(PYENV) install $(notdir $@)
 
-# $(PYENV_VERSIONS)/neovim2: $(PYTHON_2_DIR) |$(PYENV)
-# 	$(PYENV) virtualenv $(PYTHON_2) $(notdir $@)
 
 $(PYENV_VERSIONS)/neovim3: $(PYTHON_3_DIR) |$(PYENV)
 	$(PYENV) virtualenv $(PYTHON_3) $(notdir $@)
-
-# $(PYTHON_2_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim2
-# 	PATH="$(PYENV_VERSIONS)/neovim2/bin:$$PATH" pip install --upgrade pip
-# 	PATH="$(PYENV_VERSIONS)/neovim2/bin:$$PATH" pip install neovim
 
 $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 	PATH="$(PYENV_VERSIONS)/neovim3/bin:$$PATH" pip install --upgrade pip
@@ -456,12 +418,6 @@ tfenv: $(HOME)/.tfenv
 $(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
 	git clone https://github.com/tfutils/tfenv.git $@
 
-sketchybar: $(HOME)/.local/share/sketchybar_lua
-$(HOME)/.local/share/sketchybar_lua: |$(BREW_FORMULAS_PATHS)
-	curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.5/sketchybar-app-font.ttf -o $(HOME)/Library/Fonts/sketchybar-app-font.ttf
-	(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
-	brew services start sketchybar
-
 $(PYENV_VERSIONS)/poetry: $(PYTHON_3_DIR) |$(PYENV)
 	$(PYENV) virtualenv $(PYTHON_3) $(notdir $@)
 
@@ -470,30 +426,17 @@ $(POETRY_HOME): $(PYENV_VERSIONS)/poetry
 	# Need to use correct virtualenv for this to work
 	PATH="$(PYENV_VERSIONS)/poetry/bin:$$PATH" curl -sSL https://install.python-poetry.org | POETRY_HOME=$(POETRY_HOME) python3 -
 
-DOCKER_LOCK_VERSION := 0.8.10
-docker-lock: $(HOME)/.docker/cli-plugins/docker-lock
-$(HOME)/.docker/cli-plugins/docker-lock:
-	mkdir -p "$(HOME)/.docker/cli-plugins"
-	curl -fsSL "https://github.com/safe-waters/docker-lock/releases/download/v$(DOCKER_LOCK_VERSION)/docker-lock_$(DOCKER_LOCK_VERSION)_$(OS)_$(ARCH).tar.gz" | tar -xz -C "$(HOME)/.docker/cli-plugins" "docker-lock"
-	chmod +x "$(HOME)/.docker/cli-plugins/docker-lock"
-
 dirs: $(DIRS)
 $(DIRS):
 	mkdir -p $@
 
-submodules: $(HOME)/.vim/bundle/Vundle.vim
-$(HOME)/.vim/bundle/Vundle.vim: |$(BREW_CELLAR)git
-	git submdule update --init
-
 .PHONY: \
-	base16-shell \
 	brew \
 	brew-install \
 	brew-tap \
 	brew-update \
 	brew-update \
 	dirs \
-	docker-lock \
 	dot-files \
 	dot-config-files \
 	input-font \
