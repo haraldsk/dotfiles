@@ -40,10 +40,8 @@ BREW_TAPS := \
 	hashicorp/homebrew-tap \
 	homebrew/homebrew-cask-fonts \
 	homeport/homebrew-tap \
-	puppetlabs/homebrew-puppet \
 	incu6us/homebrew-tap \
 	koekeishiya/homebrew-formulae \
-	spacelift-io/homebrew-spacelift \
 	teamookla/homebrew-speedtest
 
 PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
@@ -51,7 +49,6 @@ PREDEF_BREW_TAPS := $(addprefix $(BREW_TAPS_PATH)/,$(BREW_TAPS))
 BREW_FORMULAS := \
 	ack \
 	ansible \
-	argocd \
 	aspell \
 	actionlint \
 	awscli \
@@ -108,7 +105,6 @@ BREW_FORMULAS := \
 	libpq \
 	nowplaying-cli \
 	make \
-	minikube \
 	mysql-client \
 	node \
 	opa \
@@ -124,7 +120,6 @@ BREW_FORMULAS := \
 	readline \
 	reattach-to-user-namespace \
 	ripgrep \
-	ruby \
 	rust \
 	skhd \
 	shellcheck \
@@ -150,7 +145,6 @@ BREW_FORMULAS := \
 	up \
 	vale \
 	vault \
-	velero \
 	watch \
 	wget \
 	xz \
@@ -174,12 +168,9 @@ UNIVERSAL_CTAGS := $(BREW_TAPS_PATH)/universal-ctags/homebrew-universal-ctags
 BREW_CASKS := \
 	1password \
 	1password-cli \
-	alt-tab \
 	copyq \
 	docker \
-	drawio \
 	fanny \
-	figma \
 	font-input \
 	font-inter \
 	font-3270-nerd-font \
@@ -238,20 +229,9 @@ BREW_CASKS := \
 	font-victor-mono-nerd-font \
 	karabiner-elements \
 	kubecontext \
-	intellij-idea-ce \
-	iterm2 \
 	meld \
-	messenger \
-	microsoft-teams \
 	orbstack \
-	puppet-agent \
-	sf-symbols \
-	slack \
-	spotify \
-	yt-music \
-	via \
-	whatsapp \
-	zoom
+	sf-symbols
 
 BREW_CASKS_PATHS := $(addprefix $(BREW_CASK_ROOM),$(BREW_CASKS))
 
