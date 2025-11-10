@@ -1,5 +1,5 @@
-[includeIf "gitdir:~/src/github.com/nrkno/"]
-  path = .gitconfig-nrkno
+[include]
+  path = .gitconfig-local
 
 [includeIf "gitdir:~/src/github.com/haraldsk/"]
   path = .gitconfig-haraldsk
