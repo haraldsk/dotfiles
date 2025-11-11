@@ -13,8 +13,9 @@
 ### Lua (Neovim config)
 - Configuration located in `src/config/nvim/`
 - Main entry point: `src/config/nvim/init.lua`
-- User configuration modules in `src/config/nvim/lua/my/`
-- Plugin specifications in `src/config/nvim/lua/plugins/`
+- Plugin config split into two areas:
+  - **New config**: `src/config/nvim/lua/plugins/` (lazy.nvim plugin specs)
+  - **Legacy config**: `src/config/nvim/lua/my/` (old-style setup, gradually migrating)
 - Use 2 spaces indentation, 120 column width
 - Follow lazy.nvim plugin structure with `spec = { import = "plugins" }`
 - Leader key: space (`vim.g.mapleader = " "`)
