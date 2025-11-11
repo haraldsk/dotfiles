@@ -77,6 +77,7 @@ BREW_FORMULAS := \
 	github-markdown-toc \
 	gnupg \
 	go \
+	goenv \
 	golangci-lint \
 	golines \
 	gofumpt \
@@ -106,6 +107,7 @@ BREW_FORMULAS := \
 	mysql-client \
 	node \
 	opa \
+	opencode \
 	openssh \
 	openssl@1.1 \
 	openssl@3 \
@@ -138,7 +140,7 @@ BREW_FORMULAS := \
 	tmux \
 	tmuxinator \
 	tree \
-	up \
+	uv \
 	vale \
 	vault \
 	watch \
@@ -294,7 +296,6 @@ install: \
 	$(KREW_PLUGINS_PATHS) \
 	$(PYENV) \
 	$(HOME)/.zcomet/bin \
-	$(HOME)/.goenv \
 	$(HOME)/.tfenv \
 	$(POETRY_HOME) \
 	$(GEMS)
@@ -409,10 +410,6 @@ $(PYTHON_3_NEOVIM_LIB): $(PYENV_VERSIONS)/neovim3
 zcomet: $(HOME)/.zcomet/bin
 $(HOME)/.zcomet/bin:
 	git clone https://github.com/agkozak/zcomet.git $@
-
-goenv: $(HOME)/.goenv
-$(HOME)/.goenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
-	git clone https://github.com/syndbg/goenv.git $@
 
 tfenv: $(HOME)/.tfenv
 $(HOME)/.tfenv: |$(BREW_CELLAR)git $(HOME)/.bash_profile $(HOME)/.zshrc
