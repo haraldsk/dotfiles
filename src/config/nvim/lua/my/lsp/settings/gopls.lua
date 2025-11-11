@@ -7,7 +7,7 @@ return {
         unusedparams = true,
       },
       staticcheck = true,
-      -- gofumpt = true, -- using null-ls here
+      -- gofumpt = true, -- using conform.nvim for formatting
       completeUnimported = true, -- automatically import packages
       -- placeholders enables placeholders for function parameters or struct fields in completion responses.
       -- this is nice in theory, but makes a mess with other plugins like lsp

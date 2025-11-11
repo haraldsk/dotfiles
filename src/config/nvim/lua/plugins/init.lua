@@ -162,24 +162,6 @@ return {
     end,
   },
 
-  --  -- auto install formatters and linters with Mason, using the configuration
-  --  -- in none-ls as the source of trouth, similar to mason-lspconfig for LSP
-  {
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
-    },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = nil,
-        automatic_installation = true,
-      })
-    end,
-  },
-
-  "nvimtools/none-ls.nvim", -- formatting and linting
-
   {
     "plasticboy/vim-markdown",
     dependencies = {

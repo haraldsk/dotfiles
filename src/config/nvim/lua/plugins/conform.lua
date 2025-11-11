@@ -16,23 +16,46 @@ return {
   },
   opts = {
     formatters_by_ft = {
+      -- Python
       python = { "ruff_format" },
-      -- Add more formatters as you migrate from none-ls:
-      -- lua = { "stylua" },
-      -- javascript = { "prettier" },
-      -- typescript = { "prettier" },
-      -- go = { "gofumpt", "goimports_reviser" },
+
+      -- Lua
+      lua = { "stylua" },
+
+      -- JavaScript/TypeScript/Web
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
+      yaml = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      html = { "prettier" },
+
+      -- Markdown
+      markdown = { "markdownlint" },
+
+      -- Go
+      go = { "gofumpt", "goimports_reviser" },
+
+      -- Terraform/HCL (using terraform_fmt for both)
+      terraform = { "terraform_fmt" },
+      tf = { "terraform_fmt" },
+      hcl = { "terraform_fmt" },
     },
+
     -- Format on save
     format_on_save = {
       timeout_ms = 500,
       lsp_fallback = true,
     },
+
     -- Customize formatters
     formatters = {
-      ruff_format = {
-        -- You can add extra args here if needed
-        -- prepend_args = { "--line-length", "120" },
+      prettier = {
+        prepend_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       },
     },
   },

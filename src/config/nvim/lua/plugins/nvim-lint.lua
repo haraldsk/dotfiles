@@ -8,11 +8,22 @@ return {
 
     -- Configure linters by filetype
     lint.linters_by_ft = {
+      -- Python
       python = { "ruff" },
-      -- Add more linters as you migrate from none-ls:
-      -- go = { "golangci_lint" },
-      -- yaml = { "yamllint" },
-      -- terraform = { "tflint" },
+
+      -- Go
+      go = { "golangci_lint" },
+
+      -- YAML
+      yaml = { "yamllint" },
+
+      -- Terraform
+      terraform = { "tflint", "tfsec" },
+      tf = { "tflint", "tfsec" },
+
+      -- Markdown/Prose
+      markdown = { "vale" },
+      text = { "vale" },
     }
 
     -- Create autocommand to trigger linting

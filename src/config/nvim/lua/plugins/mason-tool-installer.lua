@@ -9,16 +9,32 @@ return {
     require("mason-tool-installer").setup({
       -- List of tools to auto-install
       ensure_installed = {
-        -- Python tools
-        "pyright", -- LSP (already in mason servers, but good to ensure)
-        "ruff", -- formatter and linter
+        -- Python
+        "pyright",
+        "ruff",
 
-        -- Add more tools as you migrate from none-ls:
-        -- "stylua", -- Lua formatter
-        -- "prettier", -- JS/TS/JSON/etc formatter
-        -- "golangci-lint", -- Go linter
-        -- "yamllint", -- YAML linter
-        -- "tflint", -- Terraform linter
+        -- Lua
+        "stylua",
+
+        -- JavaScript/TypeScript/Web
+        "prettier",
+
+        -- Go
+        "gofumpt",
+        "goimports-reviser",
+        "golangci-lint",
+
+        -- Terraform/HCL
+        "terraform-ls",
+        "tflint",
+        "tfsec",
+
+        -- YAML
+        "yamllint",
+
+        -- Markdown/Prose
+        "markdownlint",
+        "vale",
       },
       auto_update = false,
       run_on_start = true,
