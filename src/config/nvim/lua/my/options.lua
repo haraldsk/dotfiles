@@ -41,8 +41,14 @@ local options = {
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
 }
 
+-- Use pcall to safely set options (avoids errors on non-modifiable buffers)
 for k, v in pairs(options) do
-  vim.opt[k] = v
+  local ok, err = pcall(function()
+    vim.opt[k] = v
+  end)
+  if not ok then
+    vim.notify("Error setting option " .. k .. ": " .. tostring(err), vim.log.levels.WARN)
+  end
 end
 
 -- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
