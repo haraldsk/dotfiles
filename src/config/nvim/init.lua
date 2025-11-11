@@ -2,7 +2,6 @@
 --- plugins need to go first
 require("my.plugins")
 -- require("my.toggleterm")
-require("my.autopairs")
 require("my.bufferline")
 require("my.comment")
 require("my.completions")

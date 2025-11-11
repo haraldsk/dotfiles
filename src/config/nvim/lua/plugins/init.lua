@@ -2,7 +2,6 @@ return {
   "christoomey/vim-tmux-navigator", -- jumping between vim and tmux
   "tpope/vim-dispatch", -- async dispatch into tmux panes, etc.
   "itspriddle/vim-marked", -- Marked plugin
-  "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
   "famiu/bufdelete.nvim", -- Implements BDelete and BWipe for proper buffer deletion
 
   "tmux-plugins/vim-tmux", -- plugin for tmux.conf
