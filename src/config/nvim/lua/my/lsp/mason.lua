@@ -7,9 +7,7 @@ local servers = {
   "gopls",
   "gradle_ls",
   "helm_ls",
-  "jdtls",
   "jsonls",
-  "kotlin_language_server",
   "lemminx", -- xml
   "lua_ls",
   "marksman",
@@ -17,7 +15,6 @@ local servers = {
   "puppet",
   "pyright",
   -- "salt_ls",  -- breaks on  yaml package
-  "spectral", -- openapi
   "terraformls",
   "ts_ls",
   "yamlls",
