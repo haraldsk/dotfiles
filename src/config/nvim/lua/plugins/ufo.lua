@@ -6,7 +6,14 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     open_fold_hl_timeout = 150,
-    close_fold_kinds = { "imports" },
+    fold_virt_text_handler = function(virt_text_config)
+      local ufo = require("ufo")
+      local ret = {}
+      for _, v in ipairs(virt_text_config) do
+        table.insert(ret, v)
+      end
+      return ret
+    end,
     -- provider_selector = 'lsp',
     preview = {
       win_config = {

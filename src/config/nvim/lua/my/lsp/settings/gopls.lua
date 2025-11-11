@@ -14,17 +14,16 @@ return {
       -- inlayhings and completion plugins
       usePlaceholders = false,
 
-
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,
         constantValues = true,
         functionTypeParameters = true,
         parameterNames = true,
-        rangeVariableTypes = true
-      }
+        rangeVariableTypes = true,
+      },
     },
   },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git")
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 }

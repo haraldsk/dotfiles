@@ -6,22 +6,22 @@ return {
     ansible = {
       ansible = {
         path = "ansible",
-        useFullyQualifiedCollectionNames = true
+        useFullyQualifiedCollectionNames = true,
       },
       ansibleLint = {
         enabled = true,
-        path = "ansible-lint"
+        path = "ansible-lint",
       },
       executionEnvironment = {
-        enabled = false
+        enabled = false,
       },
       python = {
-        interpreterPath = "python"
+        interpreterPath = "python",
       },
       completion = {
         provideRedirectModules = true,
-        provideModuleOptionAliases = true
-      }
+        provideModuleOptionAliases = true,
+      },
     },
   },
 }
