@@ -53,9 +53,6 @@ return {
     config = true,
   },
 
-  -- folding
-  { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-
   -- indent-blankline
   {
     "lukas-reineke/indent-blankline.nvim",
