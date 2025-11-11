@@ -3,7 +3,6 @@
 require("my.plugins")
 -- require("my.toggleterm")
 require("my.bufferline")
-require("my.comment")
 require("my.completions")
 require("my.dap")
 require("my.fidget")
