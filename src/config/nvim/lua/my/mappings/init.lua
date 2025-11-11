@@ -6,6 +6,5 @@ end
 require("my.mappings.dap")
 require("my.mappings.general")
 require("my.mappings.telescope")
-require("my.mappings.todo-comments")
 require("my.mappings.treesitter")
 require("my.mappings.unimpaired")
