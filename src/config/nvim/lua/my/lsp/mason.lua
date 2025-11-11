@@ -16,6 +16,7 @@ local servers = {
   "marksman",
   "neocmake", -- requires cargo installer
   "puppet",
+  "pyright",
   -- "salt_ls",  -- breaks on  yaml package
   "spectral", -- openapi
   "terraformls",
