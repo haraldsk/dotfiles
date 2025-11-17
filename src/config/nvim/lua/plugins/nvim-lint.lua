@@ -9,7 +9,8 @@ return {
     -- Configure linters by filetype
     lint.linters_by_ft = {
       -- Python
-      python = { "ruff" },
+      -- ruff linting is done through pyright
+      -- python = { "ruff" },
 
       -- Go
       go = { "golangci_lint" },
