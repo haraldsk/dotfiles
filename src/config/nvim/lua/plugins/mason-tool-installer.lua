@@ -10,7 +10,7 @@ return {
       -- List of tools to auto-install
       ensure_installed = {
         -- Python
-        "pyright",
+        "pyrefly",
         "ruff",
 
         -- Lua
