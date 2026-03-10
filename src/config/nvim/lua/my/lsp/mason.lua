@@ -12,9 +12,7 @@ local servers = {
   "lua_ls",
   "marksman",
   "neocmake", -- requires cargo installer
-  "puppet",
-  "pyright",
-  -- "salt_ls",  -- breaks on  yaml package
+  "pyrefly",
   "terraformls",
   "ts_ls",
   "yamlls",
