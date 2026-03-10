@@ -105,3 +105,6 @@ if [[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
+if [[ -d "/Applications/Obsidian.app/Contents/MacOS" ]]; then
+    export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+fi
