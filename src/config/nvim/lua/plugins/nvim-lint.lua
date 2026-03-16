@@ -11,6 +11,7 @@ return {
       -- Python
       -- ruff linting is done through pyright
       -- python = { "ruff" },
+      dockerfile = { "hadolint" },
 
       -- Go
       go = { "golangci_lint" },

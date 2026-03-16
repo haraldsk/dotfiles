@@ -9,6 +9,8 @@ return {
     require("mason-tool-installer").setup({
       -- List of tools to auto-install
       ensure_installed = {
+        -- Docker
+        "hadolint",
         -- Python
         "pyrefly",
         "ruff",
