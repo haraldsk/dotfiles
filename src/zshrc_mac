@@ -48,6 +48,9 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# make zsh delete from curor on ctrl-u instead of nuking whole line
+bindkey '^U' backward-kill-line
+
 # history
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
