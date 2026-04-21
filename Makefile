@@ -74,6 +74,7 @@ BREW_FORMULAS := \
 	gh \
 	git \
 	git-credential-oauth \
+	git-delta \
 	github-markdown-toc \
 	gnupg \
 	go \
