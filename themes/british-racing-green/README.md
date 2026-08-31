@@ -1,0 +1,18 @@
+# British Racing Green
+
+A dark Omarchy theme inspired by vintage Jaguar grand tourers, British racing
+heritage, aged brass instruments, cream leather, and rain-darkened country
+roads.
+
+## Wallpapers
+
+- `0-jaguar-mk2-airborne.png` — a Jaguar Mk 2 replacing Tokyo Night's jumping
+  Audi composition.
+- `1-jaguar-e-type-moors.png` — a Jaguar E-Type on a wet moorland road at dusk.
+
+Install the theme by linking this directory into
+`~/.config/omarchy/themes/british-racing-green`, then run:
+
+```sh
+omarchy theme set british-racing-green
+```

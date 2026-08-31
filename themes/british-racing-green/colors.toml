@@ -1,0 +1,32 @@
+mode = "dark"
+
+# British Racing Green, polished walnut, aged brass, and warm Connolly leather.
+accent = "#D0A85C"
+selection = "#163E32"
+muted = "#466057"
+
+background = "#071A14"
+dark_background = "#04110D"
+darker_background = "#020B08"
+lighter_background = "#102A21"
+
+foreground = "#D9D6C8"
+dark_foreground = "#718078"
+light_foreground = "#ECE7D5"
+bright_foreground = "#FFF8E7"
+
+red = "#A64B45"
+yellow = "#D0A85C"
+orange = "#C9824B"
+green = "#4F8A64"
+cyan = "#6E9C91"
+blue = "#688B88"
+magenta = "#8E6674"
+brown = "#7A5941"
+
+bright_red = "#D16B61"
+bright_yellow = "#E8C779"
+bright_green = "#76AD7E"
+bright_cyan = "#8FBDB0"
+bright_blue = "#8BAEAA"
+bright_magenta = "#B18494"
