@@ -15,7 +15,7 @@
 [core]
 	autocrlf = input
 	editor = nvim
-	excludesfile = /Users/harald.skoglund/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	symlinks = false
     pager = delta
 

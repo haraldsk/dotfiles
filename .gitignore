@@ -7,22 +7,17 @@
 Session.vim
 .netrwhist
 *~
-!src/vim/bundle/.keep
-src/vim/bundle
-src/vim/plugged
-src/vim/plugin/eclim.vim
-src/vim/eclim
 
 ### NVIM ###
-src/config/nvim/plugin/packer_compiled.lua
-!src/config/nvim/undodir/.keep
-src/config/nvim/undodir/*
-src/config/nvim//undodir/.*
+stow/mac/.config/nvim/plugin/packer_compiled.lua
+!stow/mac/.config/nvim/undodir/.keep
+stow/mac/.config/nvim/undodir/*
+stow/mac/.config/nvim//undodir/.*
 
 ### SSH ###
-src/ssh/id_*
-src/ssh/known_hosts
-src/ssh/conf.d/*.private.conf
+stow/mac/.ssh/id_*
+stow/mac/.ssh/known_hosts
+stow/mac/.ssh/conf.d/*.private.conf
 
 ### OSX ###
 .DS_Store

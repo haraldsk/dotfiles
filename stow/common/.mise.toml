@@ -1,0 +1,10 @@
+[tools]
+python = "3.14"
+node = "lts"
+go = "latest"
+terraform = "latest"
+# java = "..."  # add a version here if/when a JDK is needed; sdkman wasn't
+#               # actually in use on this machine, nothing to carry over yet
+
+[settings]
+experimental = true

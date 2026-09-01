@@ -1,0 +1,15 @@
+# Extra packages for an Omarchy machine, beyond Omarchy's own base install.
+# Checked against a real Omarchy 4.0.2 box: everything already covered by
+# the base install (bat, btop, eza, fd, fzf, jq, mise, neovim, ripgrep,
+# starship, tmux, zoxide, ...) is deliberately left out here.
+
+# pacman
+direnv
+git-delta
+shellcheck
+tig
+tree
+yq
+zsh
+
+# aur

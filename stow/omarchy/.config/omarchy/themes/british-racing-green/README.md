@@ -10,8 +10,9 @@ roads.
   Audi composition.
 - `1-jaguar-e-type-moors.png` — a Jaguar E-Type on a wet moorland road at dusk.
 
-Install the theme by linking this directory into
-`~/.config/omarchy/themes/british-racing-green`, then run:
+This theme is stowed automatically as part of the `omarchy` package (see the
+repo root `README.md`) — `just omarchy-install` symlinks this directory into
+`~/.config/omarchy/themes/british-racing-green`. Activate it with:
 
 ```sh
 omarchy theme set british-racing-green
