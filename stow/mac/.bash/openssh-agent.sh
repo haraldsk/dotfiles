@@ -3,13 +3,7 @@
 ## requiments: brew install openssh
 ## Starts openssh ssh-agent at a given path, good for custom ssh setups
 
-if [[ "$(uname -p)" == "arm" ]]; then
-  BREW_PATH=/opt/homebrew
-else
-  BREW_PATH=/usr/local
-fi
-
-SSH_AGENT="${BREW_PATH}/bin/ssh-agent"
+SSH_AGENT="$(command -v ssh-agent)"
 SSH_AGENT_PATH=~/.openssh.agent
 SSH_AGENT_TIMEOUT=8h
 

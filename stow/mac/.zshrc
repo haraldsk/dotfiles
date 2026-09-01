@@ -7,9 +7,7 @@ source $HOME/.env
 source $HOME/.zsh/completion
 source $HOME/.zsh/prompt
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 [ -s $HOME/.bash/openssh-agent.sh ] && source $HOME/.bash/openssh-agent.sh
 
